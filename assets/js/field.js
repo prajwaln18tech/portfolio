@@ -1,4 +1,4 @@
-// Ambient particle field behind the page. Pauses when the tab is hidden; static when motion is reduced.
+// Ambient particle field behind the page. Pauses when the tab is hidden; static when Reduce Motion is on.
 
 export function initField({ canvas, reduced }) {
   const ctx = canvas.getContext('2d');
@@ -48,7 +48,13 @@ export function initField({ canvas, reduced }) {
       ctx.beginPath(); ctx.arc(a.x, a.y, 1.3, 0, Math.PI * 2); ctx.fill();
     }
   };
-  const loop = () => { draw(); raf = requestAnimationFrame(loop); };
+  // Touch devices animate at ~30fps: smooth enough for slow drift, half the battery cost.
+  const frameGap = matchMedia('(pointer: coarse)').matches ? 1000 / 30 : 0;
+  let last = 0;
+  const loop = (t = 0) => {
+    if (t - last >= frameGap) { last = t; draw(); }
+    raf = requestAnimationFrame(loop);
+  };
 
   readColor();
   resize();
@@ -56,9 +62,7 @@ export function initField({ canvas, reduced }) {
   addEventListener('resize', resize);
   addEventListener('pointermove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
 
-  // Phones: draw once. A 60fps canvas behind the whole page costs battery and scroll smoothness.
-  const still = reduced || matchMedia('(pointer: coarse)').matches;
-  if (still) { draw(); addEventListener('resize', draw); return; }
+  if (reduced) { draw(); addEventListener('resize', draw); return; }
   loop();
   document.addEventListener('visibilitychange', () => {
     cancelAnimationFrame(raf);

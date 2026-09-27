@@ -60,7 +60,7 @@ export function initClusters({ root, reduced }) {
   const settle = () => {
     root.classList.add('settled');
     dots.forEach((d) => {
-      d.style.transition = `transform 1.6s cubic-bezier(.2,.7,.1,1) ${(Math.random() * 0.5).toFixed(2)}s`;
+      d.style.transition = reduced ? 'none' : `transform 1.6s cubic-bezier(.2,.7,.1,1) ${(Math.random() * 0.5).toFixed(2)}s`;
       d.style.transform = `translate(${d.dataset.tx}px, ${d.dataset.ty}px)`;
     });
   };
@@ -70,8 +70,13 @@ export function initClusters({ root, reduced }) {
   else new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { o.disconnect(); requestAnimationFrame(settle); } }, { threshold: 0.4 }).observe(svg);
 
   btn.addEventListener('click', () => {
+    if (reduced) { // dissolve out, regroup, dissolve back in — no flying points
+      root.classList.add('fading');
+      setTimeout(() => { scatter(true); settle(); root.classList.remove('fading'); }, 320);
+      return;
+    }
     scatter(false);
-    setTimeout(settle, reduced ? 0 : 650);
+    setTimeout(settle, 650);
   });
 
   // Tooltip

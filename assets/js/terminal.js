@@ -5,7 +5,7 @@ import { search } from './search.js';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-export function initTerminal({ el, reduced, actions }) {
+export function initTerminal({ el, actions }) {
   const out = el.querySelector('.term-out');
   const form = el.querySelector('.term-form');
   const input = el.querySelector('.term-input');
@@ -273,7 +273,7 @@ export function initTerminal({ el, reduced, actions }) {
       const row = line(span('p', '$ '));
       const c = span('c', '');
       row.append(c);
-      if (reduced || skipIntro) c.textContent = cmd;
+      if (skipIntro) c.textContent = cmd;
       else {
         const caret = span('caret', '');
         row.append(caret);
@@ -286,7 +286,7 @@ export function initTerminal({ el, reduced, actions }) {
         caret.remove();
       }
       render ? render() : cmds[cmd].run([]);
-      if (!reduced && !skipIntro) await sleep(420);
+      if (!skipIntro) await sleep(420);
     }
     finishIntro();
   })();

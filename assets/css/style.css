@@ -353,7 +353,8 @@ main, .footer, .nav { position: relative; z-index: 2; }
   background: radial-gradient(500px circle at var(--mx, 50%) var(--my, 50%), var(--glow), transparent 45%);
   transition: opacity .3s;
 }
-.spot:hover::before { opacity: 1; }
+@media (hover: hover) { .spot:hover::before { opacity: 1; } }
+.spot.tap::before { opacity: 1; transition-duration: .08s; }
 .spot:hover { border-color: var(--line-2); }
 
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -961,18 +962,35 @@ a.chip:hover { border-color: var(--accent); }
 }
 @keyframes flow-v { to { top: 100%; } }
 
+/* Reduce, don't remove: with Reduce Motion on, movement becomes a gentle dissolve (the way iOS itself
+   handles it). Fades, typing and counting stay; sliding, parallax and continuous drift stop. */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
   html { scroll-behavior: auto; }
-  .marquee-track { animation: none; }
+  .js .reveal { transform: none; transition: opacity .7s ease; transition-delay: var(--d, 0s); }
+  .rotator .rw, .rotator .rw.out { transform: none; }
+  .arch, .cutout { animation: fade-in .9s ease both; }
+  .chip { animation: fade-in .6s ease both calc(.35s + var(--n) * .12s); }
+  .arch-sheen, .marquee-track, .board::after, .wave i, .narr-wave i, .pl-link i::after { animation: none; }
+  .dot::after { display: none; }
   .stage [data-depth] { translate: none !important; }
+  .btn:hover, .ext:hover, .portrait:hover img { transform: none; }
+  .award-feature:hover img { transform: scale(1.14); }
+  .ask-hit, .sim-log li, .cmdk-panel, .lightbox img { animation-name: fade-in; }
+  #clusters svg { transition: opacity .3s ease; }
+  #clusters.fading svg { opacity: 0; }
 }
+@keyframes fade-in { from { opacity: 0; } }
 
 
 /* ---------- touch devices: lighter rendering, no hover-only affordances ---------- */
 .on-touch { display: none; }
 .cmdk-close { display: none; width: 34px; height: 34px; margin-right: -6px; border: 0; border-radius: 50%; background: var(--surface-2); color: var(--text-2); font-size: 14px; }
 @media (hover: none) {
+  /* iOS keeps :hover "stuck" after a tap, so hover lifts become press feedback instead. */
+  .btn:hover, .ext:hover { transform: none; }
+  .btn, .chip, .more-btn, .suggest button, .narr-play, .narr-sound, .sim-run, .cl-rerun, .kbd-btn, .icon-btn { transition: transform .15s ease, background .2s, border-color .2s, color .2s; }
+  .btn:active, .chip:active, .more-btn:active, .suggest button:active, .narr-play:active, .narr-sound:active, .sim-run:active, .cl-rerun:active, .kbd-btn:active, .icon-btn:active { transform: scale(.96); }
+  .stage.scroll-depth [data-depth] { transition: none; }
   .on-hover, .on-hover-flex, .cmdk-esc { display: none; }
   .on-touch { display: inline; }
   .cmdk-close { display: grid; place-items: center; }
@@ -983,7 +1001,7 @@ a.chip:hover { border-color: var(--accent); }
   .card { background: color-mix(in srgb, var(--bg-2) 94%, transparent); }
   .metrics li { background: var(--bg-2); }
   .chip { background: color-mix(in srgb, var(--bg) 92%, transparent); }
-  .spot::before { display: none; }
+  .spot::before { transition: opacity .6s ease; }
   /* iOS zooms the whole page when an input's text is under 16px. */
   .term-input, .cmdk-input input, .ask-form input { font-size: 16px; }
 }

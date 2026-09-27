@@ -11,7 +11,7 @@ export function initPipeline({ root, reduced }) {
   const node = (id) => pipe.querySelector(`[data-node="${id}"]`);
   let running = false;
   let clock = 0;
-  const SPEED = reduced ? 0.05 : 0.45; // real ms per simulated ms
+  const SPEED = 0.45; // real ms per simulated ms
 
   const state = (id, s) => {
     const n = node(id);

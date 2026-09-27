@@ -33,7 +33,7 @@ $('#vcard').addEventListener('click', vcard);
 initScrollChrome();
 initReveal();
 initSpotlight();
-initCounters(reduced);
+initCounters();
 initRotator(reduced);
 initStage(reduced);
 initCollapsibles();
@@ -42,7 +42,7 @@ initField({ canvas: $('#field'), reduced });
 initClusters({ root: $('#clusters'), reduced });
 initColophon({ root: $('#colophon') });
 
-const terminal = initTerminal({ el: $('#terminal'), reduced, actions: { goto, setTheme, celebrate } });
+const terminal = initTerminal({ el: $('#terminal'), actions: { goto, setTheme, celebrate } });
 const ask = initAsk({ root: $('#ask'), toast });
 const pipeline = initPipeline({ root: $('#price-sim'), reduced });
 const narrator = initNarrator({ root: $('#narr') });

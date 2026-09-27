@@ -77,20 +77,30 @@ export function initReveal() {
 
 export function initSpotlight() {
   $$('.spot').forEach((card) => {
-    card.addEventListener('pointermove', (e) => {
+    const aim = (e) => {
       const r = card.getBoundingClientRect();
       card.style.setProperty('--mx', `${e.clientX - r.left}px`);
       card.style.setProperty('--my', `${e.clientY - r.top}px`);
-    });
+    };
+    card.addEventListener('pointermove', aim);
+    // Touch has no hover: glow briefly where the finger lands instead.
+    let t;
+    card.addEventListener('pointerdown', (e) => {
+      if (e.pointerType !== 'touch') return;
+      aim(e);
+      card.classList.add('tap');
+      clearTimeout(t);
+      t = setTimeout(() => card.classList.remove('tap'), 450);
+    }, { passive: true });
   });
 }
 
-export function initCounters(reduced) {
+// Counting up changes digits, not position, so it runs even with Reduce Motion on.
+export function initCounters() {
   const obs = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
       if (!e.isIntersecting) return;
       obs.unobserve(e.target);
-      if (reduced) return;
       const el = e.target;
       const end = +el.dataset.count;
       const suffix = el.dataset.suffix || '';
@@ -116,9 +126,12 @@ export function initRotator(reduced) {
   fit();
   if (document.fonts) document.fonts.ready.then(fit);
   addEventListener('resize', fit);
-  if (reduced || words.length < 2) return;
+  if (words.length < 2) return;
 
+  // With Reduce Motion the words dissolve instead of sliding, and stop after one full cycle.
+  let steps = 0;
   const step = () => {
+    if (reduced && ++steps > words.length) { clearInterval(timer); return; }
     const cur = words[i];
     i = (i + 1) % words.length;
     cur.classList.remove('on');
@@ -165,13 +178,24 @@ export function initCollapsibles() {
   mq.addEventListener('change', apply);
 }
 
-// Hero portrait: layers drift with the pointer at different depths for a subtle 3D feel.
+// Hero portrait: layers drift at different depths for a subtle 3D feel — following the pointer
+// on desktop, and following the scroll on touch screens, which have no cursor.
 export function initStage(reduced) {
   const stage = $('#stage');
-  if (!stage || reduced || !matchMedia('(hover: hover)').matches) return;
+  if (!stage || reduced) return;
   const layers = $$('[data-depth]', stage);
   const hero = stage.closest('section');
   let raf = 0;
+  if (!matchMedia('(hover: hover)').matches) {
+    stage.classList.add('scroll-depth');
+    const onScroll = () => {
+      raf = 0;
+      const y = Math.min(scrollY, innerHeight);
+      layers.forEach((el) => el.style.setProperty('--py', `${(-y * +el.dataset.depth * 0.007).toFixed(1)}px`));
+    };
+    addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(onScroll); }, { passive: true });
+    return;
+  }
   const move = (x, y) => {
     cancelAnimationFrame(raf);
     raf = requestAnimationFrame(() => layers.forEach((el) => {
