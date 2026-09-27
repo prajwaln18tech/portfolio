@@ -201,24 +201,6 @@ main, .footer, .nav { position: relative; z-index: 2; }
 }
 :root[data-theme="light"] .cutout { filter: drop-shadow(0 20px 30px rgba(20, 20, 40, .18)); }
 @keyframes cutout-in { from { opacity: 0; clip-path: inset(100% 0 0 0); } to { opacity: 1; clip-path: inset(0 0 0 0); } }
-.chip {
-  position: absolute; z-index: 2; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
-  padding: 9px 14px; border-radius: 999px; font-size: 13px; font-weight: 500; color: var(--text);
-  background: color-mix(in srgb, var(--bg) 72%, transparent); border: 1px solid var(--line-2);
-  backdrop-filter: blur(12px) saturate(1.3); -webkit-backdrop-filter: blur(12px) saturate(1.3);
-  box-shadow: 0 16px 40px -16px rgba(0, 0, 0, .5);
-  animation: chip-in .8s var(--ease) both calc(.7s + var(--n) * .14s), bob 6s ease-in-out infinite calc(var(--n) * -1.4s);
-}
-.chip b { font-variant-numeric: tabular-nums; }
-.chip-dot { width: 8px; height: 8px; border-radius: 2px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
-.chip-ok { font-style: normal; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: #34d399; color: #0a0b0e; font-size: 11px; font-weight: 700; }
-.chip-spark { font-style: normal; color: var(--accent); }
-.chip-1 { top: 14%; left: -4%; }
-.chip-2 { top: 42%; right: -6%; }
-.chip-3 { bottom: 24%; left: -8%; }
-.chip-4 { bottom: 8%; right: 0; font-family: var(--mono); font-size: 12px; }
-@keyframes chip-in { from { opacity: 0; scale: .85; } }
-@keyframes bob { 50% { transform: translateY(-8px); } }
 
 /* console row: live terminal + metrics */
 .console { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; margin-top: 48px; align-items: stretch; }
@@ -827,14 +809,6 @@ main, .footer, .nav { position: relative; z-index: 2; }
 .mini-wide .board::after { font-size: clamp(30px, 4vw, 48px); }
 .mini-wide .chips { margin-top: 0; }
 
-/* hero badge as link */
-a.chip { text-decoration: none; }
-a.chip:hover { border-color: var(--accent); }
-.chip-doc {
-  width: 12px; height: 14px; border-radius: 2px; border: 1.5px solid var(--accent); position: relative;
-  background: linear-gradient(var(--accent), var(--accent)) 2px 4px / 5px 1.5px no-repeat, linear-gradient(var(--accent), var(--accent)) 2px 7px / 5px 1.5px no-repeat;
-}
-
 /* ---------- publication card ---------- */
 .pub { display: grid; grid-template-columns: 1fr auto; gap: 28px; padding: 30px; margin-bottom: 24px; }
 .pub h3 { font-size: clamp(20px, 2vw, 24px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.3; }
@@ -922,10 +896,6 @@ a.chip:hover { border-color: var(--accent); }
   .hero { padding-top: 104px; }
   .hero-grid { gap: 28px; }
   .stage { order: -1; max-width: 320px; height: 380px; margin-top: 4px; }
-  .chip { font-size: 12px; padding: 7px 11px; }
-  .chip-1 { left: -2%; }
-  .chip-2 { right: -3%; }
-  .chip-3 { left: -3%; }
   .console { margin-top: 36px; }
   .lede { font-size: 16.5px; }
   .metrics { grid-template-columns: 1fr 1fr; }
@@ -969,7 +939,6 @@ a.chip:hover { border-color: var(--accent); }
   .js .reveal { transform: none; transition: opacity .7s ease; transition-delay: var(--d, 0s); }
   .rotator .rw, .rotator .rw.out { transform: none; }
   .arch, .cutout { animation: fade-in .9s ease both; }
-  .chip { animation: fade-in .6s ease both calc(.35s + var(--n) * .12s); }
   .arch-sheen, .marquee-track, .board::after, .wave i, .narr-wave i, .pl-link i::after { animation: none; }
   .dot::after { display: none; }
   .stage [data-depth] { translate: none !important; }
@@ -988,8 +957,8 @@ a.chip:hover { border-color: var(--accent); }
 @media (hover: none) {
   /* iOS keeps :hover "stuck" after a tap, so hover lifts become press feedback instead. */
   .btn:hover, .ext:hover { transform: none; }
-  .btn, .chip, .more-btn, .suggest button, .narr-play, .narr-sound, .sim-run, .cl-rerun, .kbd-btn, .icon-btn { transition: transform .15s ease, background .2s, border-color .2s, color .2s; }
-  .btn:active, .chip:active, .more-btn:active, .suggest button:active, .narr-play:active, .narr-sound:active, .sim-run:active, .cl-rerun:active, .kbd-btn:active, .icon-btn:active { transform: scale(.96); }
+  .btn, .more-btn, .suggest button, .narr-play, .narr-sound, .sim-run, .cl-rerun, .kbd-btn, .icon-btn { transition: transform .15s ease, background .2s, border-color .2s, color .2s; }
+  .btn:active, .more-btn:active, .suggest button:active, .narr-play:active, .narr-sound:active, .sim-run:active, .cl-rerun:active, .kbd-btn:active, .icon-btn:active { transform: scale(.96); }
   .stage.scroll-depth [data-depth] { transition: none; }
   .on-hover, .on-hover-flex, .cmdk-esc { display: none; }
   .on-touch { display: inline; }
@@ -997,10 +966,9 @@ a.chip:hover { border-color: var(--accent); }
 }
 @media (pointer: coarse) {
   /* Blurring an animated background under every card is expensive on phone GPUs. */
-  .card, .metrics li, .terminal, .chip, .award-list li { -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .card, .metrics li, .terminal, .award-list li { -webkit-backdrop-filter: none; backdrop-filter: none; }
   .card { background: color-mix(in srgb, var(--bg-2) 94%, transparent); }
   .metrics li { background: var(--bg-2); }
-  .chip { background: color-mix(in srgb, var(--bg) 92%, transparent); }
   .spot::before { transition: opacity .6s ease; }
   /* iOS zooms the whole page when an input's text is under 16px. */
   .term-input, .cmdk-input input, .ask-form input { font-size: 16px; }

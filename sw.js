@@ -1,6 +1,6 @@
 // Service worker: precache the shell, then network-first so the live site is always fresh
 // and the cached copy is only used when offline.
-const CACHE = 'pn-portfolio-v5';
+const CACHE = 'pn-portfolio-v6';
 const SHELL = [
   './',
   './index.html',
