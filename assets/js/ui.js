@@ -134,6 +134,37 @@ export function initRotator(reduced) {
   });
 }
 
+// Phones: long bullet lists show the first two points, with a toggle for the rest.
+export function initCollapsibles() {
+  const mq = matchMedia('(max-width: 600px)');
+  const lists = $$('.job-body > ul:not(.chips), .sub > ul').filter((ul) => ul.children.length >= 4);
+  const btns = lists.map((ul) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'more-btn';
+    const extra = ul.children.length - 2;
+    b.addEventListener('click', () => {
+      const open = ul.classList.toggle('is-collapsed') === false;
+      b.setAttribute('aria-expanded', String(open));
+      b.textContent = open ? 'Show less' : `Show ${extra} more`;
+    });
+    return [ul, b, extra];
+  });
+  const apply = () => btns.forEach(([ul, b, extra]) => {
+    if (mq.matches) {
+      ul.classList.add('is-collapsed');
+      b.setAttribute('aria-expanded', 'false');
+      b.textContent = `Show ${extra} more`;
+      if (!b.isConnected) ul.after(b);
+    } else {
+      ul.classList.remove('is-collapsed');
+      b.remove();
+    }
+  });
+  apply();
+  mq.addEventListener('change', apply);
+}
+
 // Hero portrait: layers drift with the pointer at different depths for a subtle 3D feel.
 export function initStage(reduced) {
   const stage = $('#stage');

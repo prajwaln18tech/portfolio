@@ -9,9 +9,13 @@ export function initField({ canvas, reduced }) {
   const readColor = () => { rgb = getComputedStyle(root).getPropertyValue('--field').trim() || '165,148,255'; };
   const resize = () => {
     const dpr = Math.min(devicePixelRatio || 1, 2);
+    const widthChanged = innerWidth !== W;
     W = innerWidth; H = innerHeight;
     canvas.width = W * dpr; canvas.height = H * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    // Mobile browsers change the height as the address bar slides in and out while scrolling;
+    // only a width change (rotation, window resize) should reseed the field.
+    if (!widthChanged && pts.length) { pts.forEach((p) => { p.y = Math.min(p.y, H); }); return; }
     const n = Math.min(90, Math.floor((W * H) / 16000));
     pts = Array.from({ length: n }, () => ({
       x: Math.random() * W, y: Math.random() * H,
@@ -48,11 +52,13 @@ export function initField({ canvas, reduced }) {
 
   readColor();
   resize();
-  new MutationObserver(() => { readColor(); if (reduced) draw(); }).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
-  addEventListener('resize', () => { resize(); if (reduced) draw(); });
+  new MutationObserver(() => { readColor(); draw(); }).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  addEventListener('resize', resize);
   addEventListener('pointermove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
 
-  if (reduced) { draw(); return; }
+  // Phones: draw once. A 60fps canvas behind the whole page costs battery and scroll smoothness.
+  const still = reduced || matchMedia('(pointer: coarse)').matches;
+  if (still) { draw(); addEventListener('resize', draw); return; }
   loop();
   document.addEventListener('visibilitychange', () => {
     cancelAnimationFrame(raf);

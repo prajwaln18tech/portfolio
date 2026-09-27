@@ -2,7 +2,7 @@
 import { PROFILE, SECTIONS } from './data.js';
 import {
   initTheme, createToast, initScrollChrome, initReveal, initSpotlight, initCounters,
-  initRotator, initStage, initLightbox, downloadVCard, onKonami,
+  initRotator, initStage, initCollapsibles, initLightbox, downloadVCard, onKonami,
 } from './ui.js';
 import { initField } from './field.js';
 import { initTerminal } from './terminal.js';
@@ -36,6 +36,7 @@ initSpotlight();
 initCounters(reduced);
 initRotator(reduced);
 initStage(reduced);
+initCollapsibles();
 initLightbox();
 initField({ canvas: $('#field'), reduced });
 initClusters({ root: $('#clusters'), reduced });

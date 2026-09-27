@@ -53,7 +53,10 @@ export function initPalette({ commands, shortcuts }) {
   };
   const open = () => {
     lastFocus = document.activeElement;
-    cmdk.hidden = false; q.value = ''; sel = 0; render(); q.focus();
+    cmdk.hidden = false; q.value = ''; sel = 0; render();
+    // On touch screens, focusing the search box would pop up the keyboard over the menu.
+    if (matchMedia('(pointer: coarse)').matches) cmdk.querySelector('.cmdk-panel').focus({ preventScroll: true });
+    else q.focus();
   };
   const close = () => { cmdk.hidden = true; if (lastFocus && lastFocus.focus) lastFocus.focus(); };
   const exec = (i) => { const c = filtered[i]; if (!c) return; close(); c.run(); };
@@ -62,7 +65,7 @@ export function initPalette({ commands, shortcuts }) {
   const closeKeys = () => { keys.hidden = true; if (lastFocus && lastFocus.focus) lastFocus.focus(); };
 
   document.getElementById('cmdk-open').addEventListener('click', open);
-  cmdk.addEventListener('click', (e) => { if (e.target === cmdk) close(); });
+  cmdk.addEventListener('click', (e) => { if (e.target === cmdk || e.target.closest('.cmdk-close')) close(); });
   keys.addEventListener('click', (e) => { if (e.target === keys || e.target.closest('.keys-close')) closeKeys(); });
   q.addEventListener('input', () => { sel = 0; render(); });
   q.addEventListener('keydown', (e) => {
