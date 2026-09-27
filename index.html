@@ -1,616 +1,716 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-	<title>Prajwal Narayanaswamy Portfolio</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="css/animate.css">
-	<link rel="stylesheet" href="css/flexslider.css">
-	<link rel="stylesheet" href="fonts/icomoon/style.css">
-
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="css/style.css">
-
-	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700" rel="stylesheet">
-
-
-	
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prajwal Narayanaswamy — Software Engineer</title>
+  <meta name="description" content="Software engineer building AI-powered, cloud-native web applications with Python, FastAPI, React, TypeScript and Azure. Previously at Microsoft World's Edge.">
+  <meta name="author" content="Prajwal Narayanaswamy">
+  <meta name="theme-color" content="#0a0b0e">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Prajwal Narayanaswamy — Software Engineer">
+  <meta property="og:description" content="AI/LLM, full-stack and cloud engineering. FastAPI · React · TypeScript · Azure OpenAI.">
+  <meta property="og:url" content="https://prajwal-narayanaswamy.vercel.app/">
+  <meta property="og:image" content="https://prajwal-narayanaswamy.vercel.app/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://prajwal-narayanaswamy.vercel.app/assets/og.png">
+  <link rel="canonical" href="https://prajwal-narayanaswamy.vercel.app/">
+  <link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="modulepreload" href="assets/js/main.js">
+  <link rel="preload" as="image" href="images/portrait-cutout.webp" fetchpriority="high">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    (function () {
+      document.documentElement.classList.add('js');
+      try {
+        var t = localStorage.getItem('theme');
+        if (t) document.documentElement.setAttribute('data-theme', t);
+        else if (window.matchMedia('(prefers-color-scheme: light)').matches) document.documentElement.setAttribute('data-theme', 'light');
+      } catch (e) {}
+    })();
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://prajwal-narayanaswamy.vercel.app/#me",
+        "name": "Prajwal Narayanaswamy",
+        "jobTitle": "Software Engineer",
+        "image": "https://prajwal-narayanaswamy.vercel.app/images/avatar.webp",
+        "email": "mailto:prajwalnarayanaswamy8@gmail.com",
+        "alumniOf": "California State University, Chico",
+        "sameAs": ["https://github.com/prajwaln18tech", "https://www.linkedin.com/in/prajwal-narayanaswamy-2025041a0/"]
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "headline": "AI-Assisted Contextual Code Narration for the Visually Impaired",
+        "author": [
+          { "@id": "https://prajwal-narayanaswamy.vercel.app/#me" },
+          { "@type": "Person", "name": "Abbas Attarwala" },
+          { "@type": "Person", "name": "Paul Viotti" },
+          { "@type": "Person", "name": "Jaime Raigoza" },
+          { "@type": "Person", "name": "Ed Lindoo" }
+        ],
+        "datePublished": "2025-09-01",
+        "isPartOf": { "@type": "PublicationIssue", "issueNumber": "4", "isPartOf": { "@type": "PublicationVolume", "volumeNumber": "41", "isPartOf": { "@type": "Periodical", "name": "Journal of Computing Sciences in Colleges", "issn": "1937-4771" } } },
+        "pagination": "77-89",
+        "publisher": { "@type": "Organization", "name": "Consortium for Computing Sciences in Colleges" },
+        "url": "https://dl.acm.org/doi/abs/10.5555/3787712.3787735"
+      }
+    ]
+  }
+  </script>
 </head>
-<body data-spy="scroll" data-target="#pb-navbar" data-offset="200">
-
-
-
-	<nav class="navbar navbar-expand-lg site-navbar navbar-light bg-light" id="pb-navbar">
-
-		<div class="container">
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-
-
-			<div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample09">
-				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="#section-home">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="#section-portfolio">Portfolio</a></li>
-					<li class="nav-item"><a class="nav-link" href="#section-resume">Resume</a></li>
-					<li class="nav-item"><a class="nav-link" href="#section-about">About</a></li>
-					<li class="nav-item"><a class="nav-link" href="#section-contact">Contact</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-
-
-
-
-	<section class="site-hero" style="background-image: url(images/image_1.jpeg);" id="section-home" data-stellar-background-ratio="0.5">
-		<div class="container">
-			<div class="row intro-text align-items-center justify-content-center">
-				<div class="col-md-10 text-center pt-5">
-
-					<h1 class="site-heading site-animate">Hello, I'm <strong class="d-block">Prajwal Narayanaswamy</strong></h1>
-					<strong class="d-block text-white text-uppercase letter-spacing"></strong>
-
-				</div>
-			</div>
-		</div>
-	</section> <!-- section -->
-
-
-	
-	<section class="site-section" id="section-about">
-		<div class="container">
-			<div class="row mb-5 align-items-center">
-				<div class="col-lg-7 pr-lg-5 mb-5 mb-lg-0">
-					<img src="images/myimage.jpeg" alt="Image placeholder" class="img-fluid">
-				</div>
-				<div class="col-lg-5 pl-lg-5">
-					<div class="section-heading">
-						<h2>About <strong>Me</strong></h2>
-					</div>
-					<p class="lead">Excellence in action is yoga</p>
-					<p class="mb-5  ">I am a Computer Science student at California State University, Chico, with experience in software development and a passion for creating innovative solutions. Skilled in Python, C++,Cyber Security and Flutter, I enjoy collaborating on projects that solve real-world problems</p>
-
-					<p>
-						<a href="#section-contact" class="btn btn-primary px-4 py-2 btn-sm smoothscroll">Hire Me</a>
-						<a href="#" class="btn btn-secondary px-4 py-2 btn-sm">Download CV</a>
-					</p>
-				</div>
-			</div>
-
-
-		</div>
-	</section>
-
-	
-
-
-
-
-	
-	<section class="site-section " id="section-resume">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 mb-5">
-					<div class="section-heading text-center">
-						<h2>My <strong>Resume</strong></h2>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<h2 class="mb-5">Education</h2>
-					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> August 2023 - Present</span>
-						<h3>California State University, Chico</h3>
-						<span class="school">Master of Computer Science</span>
-						<p>Coursework includes Digital Forensics, Algorithms, Data Science, Cybersecurity, Web Technology, Computer Networks, and Programming</p>
-						
-					</div>
-
-					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> August 2017 - June 2021</span>
-						<h3>Visvesvaraya Technological University</h3>
-						<span class="school">Bachelor of Electronics and Communication Engineering</span>
-						<p></p>
-						
-					</div>
-
-					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> June 2015 - July 2017</span>
-						<h3>Sri Narayana Pu College</h3>
-						<span class="school">Department of PRE-University Education (PCMC)</span>
-						<p></p>
-						
-					</div>
-
-					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> June 2014 - March 2015</span>
-						<h3>Sri Chaitanya Techno School</h3>
-						<span class="school">Central Board of Secondary Education (CBSE)</span>
-						<p></p>
-						
-					</div>
-
-				</div>
-				<div class="col-md-6">
-
-
-					<h2 class="mb-5">Experience</h2>
-
-					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> November 2021 - July 2022</span>
-						<h3>Programmer Analyst Trainee</h3>
-						<span class="school">Cognizant Technology Solutions</span>
-						<p>Validated ETL processes for accuracy and reliability, designed test cases, ensured data quality through rigorous testing, and collaborated with teams to resolve issues and enhance performance.</p>
-					</div>
-
-					
-
-
-				</div>
-			</div>
-		</div>
-	</section> <!-- .section -->
-
-
-
-
-	<section class="site-section" id="section-portfolio">
-		<div class="container">
-			<div class="row">
-				<div class="section-heading text-center col-md-12">
-					<h2>Featured <strong>Portfolio</strong></h2>
-				</div>
-			</div>
-			<div class="filters">
-				<ul>
-					<li class="active" data-filter=".all">All</li>
-					<li data-filter=".mockup">Projects</li>
-					<li data-filter=".packaging">Certifications</li>
-					<li data-filter=".typography">Awards</li>
-					<li data-filter=".photography">Voluntering</li>
-				</ul>
-			</div>
-
-			<div class="filters-content">
-				<div class="row grid">
-					<div class="single-portfolio col-sm-4 all mockup">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="images/p1.png" alt="">
-							</div>
-							<a href="https://github.com/BHERRING-CSUC-FA2024/project-2-prajwaln18tech" target="_blank"> 
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-								</div>
-							</a>                                  
-						</div>
-						<div class="p-inner">
-							<h4>Multiplayer Chess Game</h4>
-							<div class="cat">Ajax</div>
-						</div>                                         
-					</div>
-					<div class="single-portfolio col-sm-4 all mockup">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="images/p2.jpg" alt="">
-							</div>
-							<a href="https://github.com/BHERRING-CSUC-FA2024/project-3-prajwaln18tech" target="_blank"> 
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-								</div>
-							</a>                                  
-						</div>
-						<div class="p-inner">
-							<h4>Multiplayer Chess Game</h4>
-							<div class="cat">Websockets</div>
-						</div>                                         
-					</div>    
-					<div class="single-portfolio col-sm-4 all mockup">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="images/tasty.jpg" alt="">
-							</div>
-							<a href="https://github.com/skatteragandla/projecttastytails/tree/main/tastytails" target="_blank"> 
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-								</div>
-							</a>                                  
-						</div>
-						<div class="p-inner">
-							<h4>Tasty Trials - Food Delivery App</h4>
-							<div class="cat">Flutter</div>
-						</div>                                         
-					</div>                         
-					<div class="single-portfolio col-sm-4 all packaging">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="images/rpa.png" alt="">
-							</div>
-							<a href="images/rpa.png" class="img-pop-up">  
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-								</div>
-							</a> 
-
-						</div>
-						<div class="p-inner">
-							<h4>RPA Starter Training</h4>
-							<div class="cat">Uipath</div>
-						</div>
-					</div>
-					<div class="single-portfolio col-sm-4 all packaging">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="images/python.PNG" alt="">
-							</div>
-							<a href="images/python.PNG" class="img-pop-up">  
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-								</div>
-							</a>                                
-						</div> 
-						<div class="p-inner">
-							<h4>Python Data Structures</h4>
-							<div class="cat">Coursera</div>
-						</div>
-					</div>
-					<div class="single-portfolio col-sm-4 all typography">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="images/p5.jpg" alt="">
-							</div>
-							<a href="images/p5.jpg" class="img-pop-up">  
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-								</div>
-							</a>                                
-						</div>
-						<div class="p-inner">
-							<h4>Space Settlement Design Contest</h4>
-							<div class="cat">NASA Ames Research Center</div>
-						</div>
-					</div>
-					<div class="single-portfolio col-sm-4 all typography">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="images/nasa.jpg" alt="">
-							</div>
-							<a href="images/nasa.jpg" class="img-pop-up">  
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-								</div>
-							</a>                                
-						</div>
-						<div class="p-inner">
-							<h4>International Space Development Conference</h4>
-							<div class="cat">Student Achievement Award</div>
-						</div>
-					</div>
-					<div class="single-portfolio col-sm-4 all photography">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="images/camp.jpg" alt="">
-							</div>
-							<a href="images/camp.jpg" class="img-pop-up">  
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-								</div>
-							</a>                                
-						</div>
-						<div class="p-inner">
-							<h4>Red Cross</h4>
-							<div class="cat">Relief Camp</div>
-						</div>
-					</div>
-					<div class="single-portfolio col-sm-4 all photography">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="images/redcross.jpeg" alt="">
-							</div>
-							<a href="https://drive.google.com/file/d/1DILF2nDWxTVjvdhlWXsvppqAyDUJjl96/view?usp=drive_link" target="_blank">  
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-								</div>
-							</a>                                
-						</div>
-						<div class="p-inner">
-							<h4>Red Cross</h4>
-							<div class="cat">Contribution</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- .section -->
-<!-- 
-	<section class="site-section">
-		<div class="container">
-			<div class="row mb-5">
-				<div class="col-md-12">
-					<div class="section-heading text-center">
-						<h2>Client <strong>Testimonial</strong></h2>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-
-					<div class="block-47 d-flex mb-5">
-						<div class="block-47-image">
-							<img src="images/person_1.jpg" alt="Image placeholder" class="img-fluid">
-						</div>
-						<blockquote class="block-47-quote">
-							<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-							<cite class="block-47-quote-author">&mdash; Ethan McCown, CEO <a href="#">XYZ Inc.</a></cite>
-						</blockquote>
-					</div>
-
-				</div>
-				<div class="col-md-6">
-
-					<div class="block-47 d-flex mb-5">
-						<div class="block-47-image">
-							<img src="images/person_2.jpg" alt="Image placeholder" class="img-fluid">
-						</div>
-						<blockquote class="block-47-quote">
-							<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-							<cite class="block-47-quote-author">&mdash; Craig Gowen, CEO <a href="#">XYZ Inc.</a></cite>
-						</blockquote>
-					</div>
-
-				</div>
-
-				<div class="col-md-6">
-
-					<div class="block-47 d-flex mb-5">
-						<div class="block-47-image">
-							<img src="images/person_3.jpg" alt="Image placeholder" class="img-fluid">
-						</div>
-						<blockquote class="block-47-quote">
-							<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-							<cite class="block-47-quote-author">&mdash; Ethan McCown, CEO <a href="#">XYZ Inc.</a></cite>
-						</blockquote>
-					</div>
-
-				</div>
-				<div class="col-md-6">
-
-					<div class="block-47 d-flex mb-5">
-						<div class="block-47-image">
-							<img src="images/person_4.jpg" alt="Image placeholder" class="img-fluid">
-						</div>
-						<blockquote class="block-47-quote">
-							<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-							<cite class="block-47-quote-author">&mdash; Craig Gowen, CEO <a href="#">XYZ Inc.</a></cite>
-						</blockquote>
-					</div>
-
-				</div>
-
-			</div>
-		</div>
-	</section> -->
-
-	<section class="site-section pb-0" id="section-skills">
-		<div class="container">
-			<div class="row mb-4">
-				<div class="col-md-12">
-					<div class="section-heading text-center">
-						<h2>My <strong>Skills</strong></h2>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<!-- Technical Skills -->
-				<div class="col-md-6 col-lg-4 text-center mb-5">
-					<div class="site-service-item site-animate" data-animate-effect="fadeIn">
-						<span class="icon">
-							<span class="icon-browser2"></span>
-						</span>
-						<h3 class="mb-4">Technical Skills</h3>
-						<p>C++, Python, Dart, HTML, CSS, JavaScript, Django, Node.js</p>
-					</div>
-				</div>
-				<!-- Frameworks -->
-				<div class="col-md-6 col-lg-4 text-center mb-5">
-					<div class="site-service-item site-animate" data-animate-effect="fadeIn">
-						<span class="icon">
-							<span class="icon-presentation"></span>
-						</span>
-						<h3 class="mb-4">Frameworks</h3>
-						<p>MySQL, Firebase, Flutter</p>
-					</div>
-				</div>
-				<!-- Tools -->
-				<div class="col-md-6 col-lg-4 text-center mb-5">
-					<div class="site-service-item site-animate" data-animate-effect="fadeIn">
-						<span class="icon">
-							<span class="icon-tools"></span>
-						</span>
-						<h3 class="mb-4">Tools</h3>
-						<p>Git, GitHub, Linux, Docker, Informatica PowerCenter</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	
-
-
-<!-- 	
-
-	<section class="site-section" id="section-blog">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 mb-5">
-					<div class="section-heading text-center">
-						<h2>Blog on <strong>Medium</strong></h2>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-sm-6 col-lg-4 mb-4">
-					<div class="blog-entry">
-						<a href="#"><img src="images/post_1.jpg" alt="Image placeholder" class="img-fluid"></a>
-						<div class="blog-entry-text">
-							<h3><a href="#">Creative Product Designer From Facebook</a></h3>
-							<p class="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-
-							<div class="meta">
-								<a href="#"><span class="icon-calendar"></span> Aug 7, 2018</a>
-								<a href="#"><span class="icon-bubble"></span> 5 Comments</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-lg-4 mb-4">
-					<div class="blog-entry">
-						<a href="#"><img src="images/post_2.jpg" alt="Image placeholder" class="img-fluid"></a>
-						<div class="blog-entry-text">
-							<h3><a href="#">Creative Product Designer From Facebook</a></h3>
-							<p class="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-
-							<div class="meta">
-								<a href="#"><span class="icon-calendar"></span> Aug 7, 2018</a>
-								<a href="#"><span class="icon-bubble"></span> 5 Comments</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-lg-4 mb-4">
-					<div class="blog-entry">
-						<a href="#"><img src="images/post_3.jpg" alt="Image placeholder" class="img-fluid"></a>
-						<div class="blog-entry-text">
-							<h3><a href="#">Creative Product Designer From Facebook</a></h3>
-							<p class="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-
-							<div class="meta">
-								<a href="#"><span class="icon-calendar"></span> Aug 7, 2018</a>
-								<a href="#"><span class="icon-bubble"></span> 5 Comments</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</section> -->
-
-	<section class="site-section" id="section-contact">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 mb-5">
-					<div class="section-heading text-center">
-						<h2>Get <strong>In Touch</strong></h2>
-					</div>
-				</div>
-
-				<div class="col-md-7 mb-5 mb-md-0">
-					<form action="" class="site-form">
-						<h3 class="mb-5">Get In Touch</h3>
-						<div class="form-group">
-							<input type="text" class="form-control px-3 py-4" placeholder="Your Name">
-						</div>
-						<div class="form-group">
-							<input type="email" class="form-control px-3 py-4" placeholder="Your Email">
-						</div>
-						<div class="form-group">
-							<input type="email" class="form-control px-3 py-4" placeholder="Your Phone">
-						</div>
-						<div class="form-group mb-5">
-							<textarea class="form-control px-3 py-4"cols="30" rows="10" placeholder="Write a Message"></textarea>
-						</div>
-						<div class="form-group">
-							<input type="submit" class="btn btn-primary  px-4 py-3" value="Send Message">
-						</div>
-					</form>
-				</div>
-				<div class="col-md-5 pl-md-5">
-					<h3 class="mb-5">My Contact Details</h3>
-					<ul class="site-contact-details">
-						<li>
-							<span class="text-uppercase">Email</span>
-							plnu@csuchico.Edu
-						</li>
-						<li>
-							<span class="text-uppercase">Phone</span>
-							+1(530) 630-9817
-						</li>
-						<li>
-							<span class="text-uppercase">Address</span>
-							San Francisco, CA <br>
-							Apt 1 , 420 Nord Avenue<br>
-							Chico, 95926
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-	<footer class="site-footer">
-		<div class="container">
-
-			<div class="row mb-5">
-				<p class="col-12 text-center">
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved 
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-				</p>
-			</div>
-			
-			<div class="row mb-5">
-				<div class="col-md-12 text-center">
-					<p>
-						<a href="https://www.facebook.com/profile.php?id=100010007087334" class="social-item"><span class="icon-facebook2"></span></a>
-						<a href="https://x.com/NPRAJWAL5?t=1OLVo7AstrGrNMJgjK9Ksg&s=09" class="social-item"><span class="icon-twitter"></span></a>
-						<a href="https://www.instagram.com/_____prajwal____/profilecard/?igsh=MTc4MmM1YmI2Ng==" class="social-item"><span class="icon-instagram2"></span></a>
-						<a href="https://www.linkedin.com/in/prajwal-narayanaswamy-2025041a0/" class="social-item"><span class="icon-linkedin2"></span></a>
-						<a href="https://github.com/prajwaln18tech" class="social-item" target="_blank">
-							<span class="icon-github"></span>
-						</a>
-						
-					</p>
-				</div>
-			</div>
-			
-		</div>
-	</footer>
-
-
-
-
-	<script src="js/vendor/jquery.min.js"></script>
-	<script src="js/vendor/jquery-migrate-3.0.1.min.js"></script>
-	<script src="js/vendor/popper.min.js"></script>
-	<script src="js/vendor/bootstrap.min.js"></script>
-
-	<script src="js/vendor/jquery.easing.1.3.js"></script>
-
-	<script src="js/vendor/jquery.stellar.min.js"></script>
-	<script src="js/vendor/jquery.waypoints.min.js"></script>
-
-	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-	<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-	<script src="js/custom.js"></script>
-
-	<!-- Google Map -->
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    	<script src="js/google-map.js"></script> -->
-
-    </body>
-    </html>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"><span></span></div>
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <a href="#top" class="brand" aria-label="Back to top">
+      <span class="brand-mark">PN</span>
+      <span class="brand-name">Prajwal N.</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#ask">Ask</a></li>
+        <li><a href="#skills">Stack</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <button class="kbd-btn" id="cmdk-open" aria-label="Open command menu">
+        <span>Menu</span><kbd>⌘K</kbd>
+      </button>
+      <button class="icon-btn" id="theme-toggle" aria-label="Toggle color theme">
+        <svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="status reveal"><span class="dot"></span> Open to Software Engineer roles · USA</p>
+          <h1 class="reveal">
+            <span class="h-name">Prajwal Narayanaswamy</span>
+            <span class="h-line">I build <em class="rotator"><span class="sr-only">AI-powered, cloud-native, accessible, secure</span><span class="rw on" aria-hidden="true">AI-powered</span><span class="rw" aria-hidden="true">cloud-native</span><span class="rw" aria-hidden="true">accessible</span><span class="rw" aria-hidden="true">secure</span></em> software — from the scraper to the screen.</span>
+          </h1>
+          <p class="lede reveal">
+            Software engineer with 2+ years shipping production web apps, LLM features and data pipelines.
+            Most recently at <strong>Microsoft&nbsp;World’s&nbsp;Edge</strong>, where I built pricing intelligence across
+            92&nbsp;markets and review analytics over 100K+ player reviews.
+          </p>
+          <p class="print-only">prajwalnarayanaswamy8@gmail.com · linkedin.com/in/prajwal-narayanaswamy-2025041a0 · github.com/prajwaln18tech · prajwal-narayanaswamy.vercel.app</p>
+          <div class="cta reveal">
+            <a href="#work" class="btn btn-primary">See selected work
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="assets/Prajwal_Narayanaswamy_Resume.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Résumé (PDF)</a>
+            <div class="socials">
+              <a href="https://github.com/prajwaln18tech" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/prajwal-narayanaswamy-2025041a0/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+              </a>
+              <a href="mailto:prajwalnarayanaswamy8@gmail.com" aria-label="Email">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <figure class="stage" id="stage">
+          <div class="arch" data-depth="-8" aria-hidden="true"><span class="arch-grid"></span><span class="arch-sheen"></span></div>
+          <img class="cutout" data-depth="6" src="images/portrait-cutout.webp" width="1122" height="1402" alt="Prajwal Narayanaswamy in a dark suit with arms crossed" fetchpriority="high" decoding="async">
+          <span class="chip chip-1" data-depth="22" style="--n:0"><i class="chip-dot"></i>Microsoft · World’s Edge</span>
+          <span class="chip chip-2" data-depth="30" style="--n:1"><b>216</b> tests passing <i class="chip-ok">✓</i></span>
+          <span class="chip chip-3" data-depth="16" style="--n:2"><i class="chip-spark">✦</i>Azure OpenAI · RAG</span>
+          <a class="chip chip-4" data-depth="26" style="--n:3" href="#publication"><i class="chip-doc" aria-hidden="true"></i>Published · ACM DL</a>
+        </figure>
+      </div>
+
+      <div class="wrap console">
+        <div class="terminal reveal" id="terminal">
+          <div class="term-bar">
+            <span></span><span></span><span></span>
+            <p>~/prajwal — zsh</p>
+            <kbd class="term-key" title="Focus terminal">`</kbd>
+          </div>
+          <div class="term-body">
+            <div class="term-out" role="log" aria-live="polite" aria-label="Terminal output"></div>
+            <form class="term-form" autocomplete="off">
+              <label class="p" for="term-in">$</label>
+              <input id="term-in" class="term-input" type="text" spellcheck="false" autocapitalize="off" aria-label="Terminal command. Type help for a list of commands." placeholder="type help">
+            </form>
+          </div>
+        </div>
+        <ul class="metrics reveal" aria-label="Highlights">
+          <li><b data-count="92">92</b><span>markets priced</span></li>
+          <li><b data-count="100" data-suffix="K+">100K+</b><span>reviews analyzed</span></li>
+          <li><b data-count="29">29</b><span>languages supported</span></li>
+          <li><b data-count="216">216</b><span>automated tests</span></li>
+          <li><b data-count="25">25</b><span>REST endpoints</span></li>
+          <li><b data-count="2" data-suffix="+">2+</b><span>years in industry</span></li>
+        </ul>
+      </div>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>Python</span><span>FastAPI</span><span>React 19</span><span>TypeScript</span><span>Azure OpenAI</span><span>RAG</span><span>Sentence-Transformers</span><span>Docker</span><span>Kubernetes</span><span>GitHub Actions</span><span>Bicep</span><span>Playwright</span><span>SQL</span><span>Entra ID</span>
+          <span>Python</span><span>FastAPI</span><span>React 19</span><span>TypeScript</span><span>Azure OpenAI</span><span>RAG</span><span>Sentence-Transformers</span><span>Docker</span><span>Kubernetes</span><span>GitHub Actions</span><span>Bicep</span><span>Playwright</span><span>SQL</span><span>Entra ID</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about">
+      <div class="wrap about-grid">
+        <div class="sec-head reveal">
+          <p class="eyebrow"><span>01</span> About</p>
+          <h2>Engineer first. <em>Product-minded</em> always.</h2>
+        </div>
+
+        <figure class="portrait reveal">
+          <div class="portrait-frame">
+            <img src="images/myimage.jpeg" alt="Portrait of Prajwal Narayanaswamy" width="267" height="401" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="mono">MS Computer Science</span>
+            <span>Cal State Chico · 2025</span>
+          </figcaption>
+        </figure>
+
+        <div class="about-copy reveal">
+          <p class="big">
+            I like the full journey of a feature: pulling messy data from the outside world, shaping it with solid
+            APIs, and putting it in front of people through fast, accessible interfaces.
+          </p>
+          <p>
+            At Microsoft’s World’s Edge studio I turned two internal ideas into production platforms — one that tracks
+            game pricing across Xbox, Steam and PlayStation in 92 markets, and one that uses embeddings and Azure OpenAI
+            to make sense of 100,000+ player reviews in 29 languages. Both are secured behind Entra ID, covered by
+            automated tests, and shipped through CI/CD.
+          </p>
+          <p>
+            Before that I built ETL pipelines at Cognizant and data tooling for research at Cal State Chico.
+            I care about the unglamorous parts too: security regressions, WCAG compliance, and caching that makes cold
+            starts disappear.
+          </p>
+
+          <dl class="facts">
+            <div><dt>Focus</dt><dd>Full-stack · GenAI / LLMs · Cloud</dd></div>
+            <div><dt>Core stack</dt><dd>Python, FastAPI, React, TypeScript, Azure</dd></div>
+            <div><dt>Experience</dt><dd>2+ years in industry</dd></div>
+            <div><dt>Motto</dt><dd><em>“Excellence in action is yoga.”</em></dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="section" id="experience">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <p class="eyebrow"><span>02</span> Experience</p>
+          <h2>Where I’ve <em>shipped</em>.</h2>
+        </div>
+
+        <ol class="timeline">
+          <li class="job reveal">
+            <div class="job-meta">
+              <p class="mono date">Sep 2025 — Sep 2026</p>
+              <p class="loc">USA</p>
+            </div>
+            <div class="job-body card spot">
+              <header>
+                <h3>Web Developer <span class="at">@ Microsoft — World’s Edge</span></h3>
+                <p class="via">via Experis</p>
+              </header>
+
+              <div class="sub">
+                <h4>World’s Edge Price Tool <span>Regional game-pricing intelligence</span></h4>
+                <ul>
+                  <li>Built an end-to-end platform (FastAPI + React 19/TypeScript) pulling prices from Xbox, Steam and PlayStation across <b>92 markets and 47 currencies</b>, normalized to tax-free USD and benchmarked against US pricing with Excel reporting.</li>
+                  <li>Engineered resilient scrapers — Xbox Display Catalog API, Steam API, concurrent parsing of <b>68 PlayStation locales</b> — with exponential back-off, a Selenium fallback, and an async job queue with rate limiting.</li>
+                  <li>Deployed on Azure App Service behind Front Door (WAF) with Entra ID sign-in; authored Bicep IaC for Container Apps and CI/CD in GitHub Actions and Azure DevOps.</li>
+                  <li>Fixed a reported production vulnerability with fail-closed Entra ID/API-key auth on every endpoint plus a <b>48-case regression suite</b>; reached <b>WCAG 2.1 AA</b> with Playwright + axe-core across 6 app states and 5 screen sizes.</li>
+                </ul>
+              </div>
+
+              <div class="sub">
+                <h4>World’s Edge Review Tool <span>AI-powered Steam review analytics</span></h4>
+                <ul>
+                  <li>Migrated a single-user Windows desktop tool into a multi-user web app with <b>25 REST endpoints</b>, analyzing <b>100,000+ reviews in 29 languages</b> — adopted by teams beyond the studio.</li>
+                  <li>Built multilingual semantic search on Sentence-Transformers with a content-addressed vector store; replaced <b>~227K per-pair calculations</b> with one vectorized matrix operation.</li>
+                  <li>Designed automated insight detection and hybrid topic discovery (semantic matching + MiniBatchKMeans + Azure OpenAI labeling).</li>
+                  <li>Integrated Azure OpenAI for grounded RAG Q&amp;A, bilingual reply drafting and theme analysis with prompt-injection safeguards; <b>216 pytest tests</b> and single-flight caching that <b>halved cold-start work</b>.</li>
+                </ul>
+              </div>
+
+              <ul class="chips">
+                <li>Python</li><li>FastAPI</li><li>React 19</li><li>TypeScript</li><li>Azure OpenAI</li><li>Entra ID</li><li>Front Door</li><li>Bicep</li><li>Docker</li><li>Playwright</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="job reveal">
+            <div class="job-meta">
+              <p class="mono date">Feb 2024 — Oct 2024</p>
+              <p class="loc">Chico, CA</p>
+            </div>
+            <div class="job-body card spot">
+              <header>
+                <h3>Instructional Student Assistant <span class="at">@ California State University, Chico</span></h3>
+              </header>
+              <ul>
+                <li>Collected and analyzed research data for faculty, applying machine learning and statistical methods.</li>
+                <li>Built reproducible preprocessing pipelines in Python (Pandas, NumPy) for cleaning, normalization and transformation.</li>
+                <li>Turned raw research data into clear visualizations that communicated trends and results.</li>
+              </ul>
+              <ul class="chips"><li>Python</li><li>Pandas</li><li>NumPy</li><li>scikit-learn</li><li>Data viz</li></ul>
+            </div>
+          </li>
+
+          <li class="job reveal">
+            <div class="job-meta">
+              <p class="mono date">Nov 2021 — Jul 2022</p>
+              <p class="loc">Bengaluru, India</p>
+            </div>
+            <div class="job-body card spot">
+              <header>
+                <h3>Programmer Analyst Trainee <span class="at">@ Cognizant Technology Solutions</span></h3>
+              </header>
+              <ul>
+                <li>Developed complex ETL workflows in Informatica PowerCenter loading large datasets into data warehouses.</li>
+                <li>Cut load times with session partitioning, pushdown optimization and parallel processing.</li>
+                <li>Integrated flat files, Oracle, SQL Server and mainframe sources with SQL validation and cleansing rules; ran root-cause analysis on pipeline failures.</li>
+              </ul>
+              <ul class="chips"><li>Informatica</li><li>Oracle</li><li>SQL Server</li><li>SQL tuning</li><li>Data warehousing</li></ul>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ WORK ============ -->
+    <section class="section" id="work">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <p class="eyebrow"><span>03</span> Selected work</p>
+          <h2>Systems, not just <em>screens</em>.</h2>
+          <p class="sec-sub">A closer look at how a few of these are put together.</p>
+        </div>
+
+        <!-- Case study 1 -->
+        <article class="case card spot reveal">
+          <div class="case-copy">
+            <p class="tag mono">Microsoft · Internal platform</p>
+            <h3>World’s Edge Price Tool</h3>
+            <p>Regional game-pricing intelligence. Scrapes three storefronts, converts every price into tax-free USD, and shows where a title is over- or under-priced relative to the US.</p>
+            <ul class="kv">
+              <li><b>92</b><span>markets</span></li>
+              <li><b>47</b><span>currencies</span></li>
+              <li><b>68</b><span>PS locales in parallel</span></li>
+              <li><b>48</b><span>security regression cases</span></li>
+            </ul>
+            <ul class="chips"><li>FastAPI</li><li>React 19</li><li>Selenium</li><li>Async queue</li><li>Azure Front Door</li><li>Bicep</li></ul>
+          </div>
+          <div class="case-visual" id="price-sim">
+            <div class="pipeline" aria-label="Pipeline: storefronts feed an async job queue, then normalization, benchmarking, and reports">
+              <div class="pl-col">
+                <span class="node" data-node="xbox">Xbox Catalog API</span>
+                <span class="node" data-node="steam">Steam API</span>
+                <span class="node" data-node="psn">PlayStation ×68</span>
+              </div>
+              <div class="pl-link"><i></i><i></i><i></i></div>
+              <div class="pl-col">
+                <span class="node node-hi" data-node="queue">Async job queue<small>rate limit · back-off · Selenium fallback</small></span>
+              </div>
+              <div class="pl-link"><i></i><i></i><i></i></div>
+              <div class="pl-col">
+                <span class="node" data-node="normalize">Normalize<small>47 currencies → tax-free USD</small></span>
+                <span class="node" data-node="benchmark">Benchmark vs US</span>
+                <span class="node" data-node="report">Excel reports</span>
+              </div>
+            </div>
+            <div class="sim">
+              <div class="sim-head">
+                <button class="sim-run" type="button">▶ Simulate a sync run</button>
+                <span class="mono sim-tag">illustrative · time-compressed</span>
+              </div>
+              <ol class="sim-log mono" aria-live="polite" aria-label="Simulation log"><li class="dim"><span class="t">+0.00s</span><span class="src">idle</span><span>Press run to watch rate limits, back-off and fallbacks play out.</span></li></ol>
+            </div>
+          </div>
+        </article>
+
+        <!-- Case study 2 -->
+        <article class="case case-rev card spot reveal">
+          <div class="case-copy">
+            <p class="tag mono">Microsoft · Internal platform · GenAI</p>
+            <h3>World’s Edge Review Tool</h3>
+            <p>Turns a flood of multilingual Steam reviews into answers. Semantic search, automatic topic discovery, and grounded Q&amp;A so teams can ask “why did sentiment drop in Brazil?” and get an answer grounded in the actual reviews.</p>
+            <ul class="kv">
+              <li><b>100K+</b><span>reviews</span></li>
+              <li><b>29</b><span>languages</span></li>
+              <li><b>227K→1</b><span>pairwise ops → one matrix op</span></li>
+              <li><b>½</b><span>cold-start work</span></li>
+            </ul>
+            <ul class="chips"><li>Sentence-Transformers</li><li>RAG</li><li>Azure OpenAI</li><li>MiniBatchKMeans</li><li>Recharts</li><li>pytest</li></ul>
+          </div>
+          <div class="case-visual" id="clusters">
+            <svg class="clusters" viewBox="0 0 400 300" role="img" aria-label="Illustration of review embeddings forming topic clusters"></svg>
+            <div class="cl-tip" aria-hidden="true"></div>
+            <div class="cl-foot">
+              <button class="cl-rerun" type="button">↻ Re-run clustering</button>
+              <span class="mono">hover a point · sample reviews are illustrative</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Case study 3: published research -->
+        <article class="case case-narrator card spot reveal" id="narrator">
+          <div class="case-copy">
+            <p class="tag mono">Research · Accessibility · GenAI</p>
+            <a class="pub-badge" href="https://dl.acm.org/doi/abs/10.5555/3787712.3787735" target="_blank" rel="noopener">
+              <span class="pub-badge-k">Peer-reviewed</span>
+              <span>JCSC 41(4) · 2025 · First author</span>
+            </a>
+            <h3>Accessible Code Narrator</h3>
+            <p>Screen readers such as JAWS read code word by word, top to bottom, and lose its structure. This VS Code extension uses an OpenAI LLM with engineered prompts to explain the <em>shape</em> of the code first, such as “a conditional nested three levels deep”, and then walks through each line in that context.</p>
+            <p>Two ElevenLabs voices keep it unambiguous: one reads the code verbatim, the other explains it.</p>
+            <ul class="kv">
+              <li><b>2</b><span>voices: code vs. context</span></li>
+              <li><b>95%</b><span>code-to-speech accuracy</span></li>
+              <li><b>1st</b><span>author, 5-person team</span></li>
+              <li><b>pp. 77–89</b><span>Journal of Computing Sciences in Colleges</span></li>
+            </ul>
+            <ul class="chips"><li>TypeScript</li><li>VS Code API</li><li>OpenAI GPT-4</li><li>Prompt engineering</li><li>ElevenLabs TTS</li></ul>
+            <div class="case-actions">
+              <a class="btn btn-primary btn-sm" href="https://dl.acm.org/doi/abs/10.5555/3787712.3787735" target="_blank" rel="noopener">Read the paper ↗</a>
+              <a class="btn btn-ghost btn-sm" href="https://github.com/prajwaln18tech/AI-Assisted_Contextual_Code_Narration" target="_blank" rel="noopener">Source code ↗</a>
+            </div>
+          </div>
+          <div class="case-visual narr" id="narr" data-voice="">
+            <div class="narr-bar">
+              <span class="narr-file mono">ship.py</span>
+              <span class="narr-legend mono"><span class="lg lg-ctx">Context voice</span><span class="lg lg-code">Code voice</span></span>
+            </div>
+            <ol class="narr-code mono" aria-label="Example code being narrated">
+              <li style="--d:0"><span class="kw">def</span> <span class="fn">ship</span>(build):</li>
+              <li style="--d:1"><span class="ind"></span><span class="kw">if</span> build.<span class="at">tests_pass</span>:</li>
+              <li style="--d:2"><span class="ind"></span><span class="kw">if</span> build.<span class="at">accessible</span>:</li>
+              <li style="--d:3"><span class="ind"></span><span class="kw">if</span> build.<span class="at">approved</span>:</li>
+              <li style="--d:4"><span class="ind"></span><span class="fn">deploy</span>(build)</li>
+              <li style="--d:3"><span class="ind"></span><span class="kw">else</span>:</li>
+              <li style="--d:4"><span class="ind"></span><span class="fn">request_review</span>(build)</li>
+              <li style="--d:1"><span class="ind"></span><span class="kw">return</span> build.<span class="at">status</span></li>
+            </ol>
+            <div class="narr-caption" aria-live="polite">
+              <span class="narr-who mono">Ready</span>
+              <span class="narr-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+              <p class="narr-text">Press play to hear structure-first narration, the technique from the paper.</p>
+            </div>
+            <div class="narr-controls">
+              <button class="narr-play" type="button">▶ Hear the narration</button>
+              <button class="narr-sound" type="button" aria-pressed="true" title="Sound on or off">🔊 Sound on</button>
+            </div>
+            <p class="visual-foot mono">Demo uses your browser’s built-in voices · the extension uses ElevenLabs (Rachel reads code, Andy explains)</p>
+          </div>
+        </article>
+
+        <article class="mini mini-wide card spot reveal">
+          <div class="mini-body">
+            <div class="mini-top">
+              <p class="tag mono">Real-time · Cloud-native</p>
+            </div>
+            <h3>Multiplayer Chess Platform</h3>
+            <p>Real-time chess over WebSockets with Django Channels, deployed on GCP Kubernetes and built to hold up under hundreds of concurrent games.</p>
+            <p class="stat"><b>&lt;100ms</b> latency · <b>500+</b> concurrent users · <b>99.9%</b> uptime</p>
+            <ul class="chips"><li>Django Channels</li><li>WebSockets</li><li>GKE</li><li>Kubernetes</li></ul>
+          </div>
+          <div class="board" aria-hidden="true"></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ ASK ============ -->
+    <section class="section" id="ask">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <p class="eyebrow"><span>04</span> Ask my résumé</p>
+          <h2>Don’t skim. <em>Ask.</em></h2>
+          <p class="sec-sub">A small retrieval engine over my résumé that runs in your browser — the same idea behind the Review Tool, scaled down. No server, no API keys, no tracking.</p>
+        </div>
+
+        <div class="ask card reveal">
+          <form class="ask-form" role="search">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input id="ask-q" type="search" placeholder="e.g. Has he shipped anything with LLMs?" autocomplete="off" aria-label="Ask a question about Prajwal">
+            <kbd class="ask-kbd">/</kbd>
+            <button class="btn btn-primary btn-sm" type="submit">Ask</button>
+          </form>
+
+          <div class="ask-bar">
+            <div class="suggest" aria-label="Suggested questions">
+              <button type="button">Has he built anything with LLMs?</button>
+              <button type="button">How does he handle security?</button>
+              <button type="button">Cloud and DevOps experience</button>
+              <button type="button">Accessibility work</button>
+              <button type="button">Has he published research?</button>
+              <button type="button">Where did he study?</button>
+            </div>
+            <div class="mode">
+              <button id="sem-toggle" class="switch" role="switch" aria-checked="false" type="button"><span class="knob"></span><span class="switch-label">Semantic mode</span></button>
+              <span class="mode-note mono"></span>
+            </div>
+          </div>
+          <div class="ask-progress" hidden><span></span></div>
+
+          <div class="ask-results" aria-live="polite">
+            <p class="ask-empty">Pick a suggestion or type a question. Turn on <b>semantic mode</b> to download a 23&nbsp;MB sentence-embedding model once and match on meaning, not just keywords.</p>
+          </div>
+
+          <ol class="how" aria-label="How it works">
+            <li class="how-step"><b>Query</b><span>your question</span></li>
+            <li class="how-step"><b>Tokenize · expand</b><span>stemming + synonyms → BM25</span></li>
+            <li class="how-step sem-only"><b>Embed</b><span>MiniLM-L6 · 384-d · in-browser</span></li>
+            <li class="how-step"><b>Rank</b><span><span class="sem-only-inline">0.7·cosine + 0.3·</span>BM25</span></li>
+            <li class="how-step"><b>Top-k</b><span>passages + sources</span></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section" id="skills">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <p class="eyebrow"><span>05</span> Stack</p>
+          <h2>Tools I <em>reach for</em>.</h2>
+        </div>
+
+        <div class="skills">
+          <div class="skill card spot reveal">
+            <h3><span class="mono">01</span> Languages</h3>
+            <ul class="chips"><li>Python</li><li>TypeScript</li><li>JavaScript</li><li>C++</li><li>SQL</li><li>HTML</li><li>CSS</li></ul>
+          </div>
+          <div class="skill card spot reveal">
+            <h3><span class="mono">02</span> Frameworks</h3>
+            <ul class="chips"><li>FastAPI</li><li>React 19</li><li>Vite</li><li>Tailwind CSS</li><li>Recharts</li><li>Node.js</li><li>Django Channels</li><li>Pandas</li><li>NumPy</li><li>Selenium</li></ul>
+          </div>
+          <div class="skill card spot reveal">
+            <h3><span class="mono">03</span> AI / ML &amp; LLMs</h3>
+            <ul class="chips"><li>Azure OpenAI</li><li>GPT-4</li><li>RAG</li><li>Prompt engineering</li><li>Embeddings</li><li>Semantic search</li><li>Sentence-Transformers</li><li>scikit-learn</li><li>NLP</li></ul>
+          </div>
+          <div class="skill card spot reveal">
+            <h3><span class="mono">04</span> Cloud &amp; DevOps</h3>
+            <ul class="chips"><li>Azure App Service</li><li>Container Apps</li><li>Front Door</li><li>Entra ID</li><li>GCP</li><li>Docker</li><li>Kubernetes</li><li>GitHub Actions</li><li>Azure DevOps</li><li>Bicep</li><li>Linux</li></ul>
+          </div>
+          <div class="skill card spot reveal">
+            <h3><span class="mono">05</span> Data &amp; ETL</h3>
+            <ul class="chips"><li>Informatica PowerCenter</li><li>Oracle</li><li>SQL Server</li><li>MySQL</li><li>SQLite</li><li>Data warehousing</li><li>ETL tuning</li></ul>
+          </div>
+          <div class="skill card spot reveal">
+            <h3><span class="mono">06</span> Quality &amp; Security</h3>
+            <ul class="chips"><li>pytest</li><li>Playwright</li><li>axe-core</li><li>E2E testing</li><li>Regression testing</li><li>WCAG 2.1 AA</li><li>AuthN / AuthZ</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EDUCATION + AWARDS ============ -->
+    <section class="section" id="education">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <p class="eyebrow"><span>06</span> Research, education &amp; recognition</p>
+          <h2>Foundations &amp; <em>milestones</em>.</h2>
+        </div>
+
+        <article class="pub card spot reveal" id="publication">
+          <div class="pub-main">
+            <p class="tag mono">Publication · Journal article</p>
+            <h3><a href="https://dl.acm.org/doi/abs/10.5555/3787712.3787735" target="_blank" rel="noopener">AI-Assisted Contextual Code Narration for the Visually Impaired</a></h3>
+            <p class="pub-authors"><b>Prajwal Narayanaswamy</b>, Abbas Attarwala, Paul Viotti, Jaime Raigoza, Ed Lindoo</p>
+            <p class="pub-venue"><em>Journal of Computing Sciences in Colleges</em>, 41(4), 77–89 · September 2025 · Consortium for Computing Sciences in Colleges · ACM Digital Library</p>
+            <details class="pub-abstract">
+              <summary>Abstract</summary>
+              <p>Conventional screen readers vocalize code linearly, word by word, and often fail to convey the contextual relationships and structural hierarchy that are fundamental to program comprehension. The paper proposes a system that uses an OpenAI large language model, guided by carefully engineered prompts, to turn source code into structured, context-aware descriptions. For example, it summarizes a deeply nested conditional before detailing each condition within that context. Implemented as a Visual Studio Code extension, it uses ElevenLabs text-to-speech with two distinct voices: one reads each line verbatim, and the other provides contextual explanations. The approach is designed to improve comprehension for blind and visually impaired programmers. It has not yet been formally evaluated with BVI participants.</p>
+            </details>
+          </div>
+          <div class="pub-side">
+            <a class="btn btn-primary btn-sm" href="https://dl.acm.org/doi/abs/10.5555/3787712.3787735" target="_blank" rel="noopener">View on ACM DL ↗</a>
+            <button class="btn btn-ghost btn-sm" type="button" data-cite="bibtex">Copy BibTeX</button>
+            <button class="btn btn-ghost btn-sm" type="button" data-cite="apa">Copy APA</button>
+            <a class="pub-demo" href="#narrator">Hear the technique in action →</a>
+          </div>
+        </article>
+
+        <div class="edu-grid">
+          <div class="edu-list">
+            <div class="edu card spot reveal">
+              <p class="mono date">Aug 2023 — Aug 2025</p>
+              <h3>MS, Computer Science</h3>
+              <p>California State University, Chico</p>
+              <p class="muted">Coursework: Algorithms, Data Science, Cybersecurity, Digital Forensics, Web Technology, Computer Networks.</p>
+            </div>
+            <div class="edu card spot reveal">
+              <p class="mono date">Aug 2017 — Jun 2021</p>
+              <h3>BE, Electronics &amp; Communication</h3>
+              <p>Visvesvaraya Technological University</p>
+            </div>
+            <div class="certs card spot reveal">
+              <h3>Certifications</h3>
+              <ul>
+                <li><span>Google Cybersecurity Professional</span><em>Coursera</em></li>
+                <li><span>Python Data Structures</span><em>University of Michigan · Coursera</em></li>
+                <li><span>IT Project Management</span><em>Coursera</em></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="awards">
+            <button class="award-feature card spot reveal" id="award-open" aria-label="View ISDC Student Achievement Award certificate">
+              <img src="images/nasa.jpg" alt="International Space Development Conference Student Achievement Award certificate" loading="lazy" width="805" height="1049">
+              <span class="award-over">
+                <span class="mono">ISDC 2014 · Los Angeles</span>
+                <strong>Student Achievement Award</strong>
+                <span>International Space Development Conference — for the “Kalpavruksha” space settlement design.</span>
+              </span>
+            </button>
+            <ul class="award-list reveal">
+              <li><b>3rd Prize</b> NASA Ames Space Settlement Design Contest</li>
+              <li><b>Semifinalist</b> DST &amp; Texas Instruments India Innovation Challenge, 2019</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section contact" id="contact">
+      <div class="wrap">
+        <div class="contact-card card reveal">
+          <div class="contact-avatar"><img src="images/avatar.webp" width="240" height="240" alt="" loading="lazy"><span class="dot" aria-hidden="true"></span></div>
+          <p class="eyebrow"><span>07</span> Contact</p>
+          <h2>Let’s build something <em>worth shipping</em>.</h2>
+          <p class="lede">I’m looking for my next software engineering role — full-stack, AI/LLM or cloud platform work. The fastest way to reach me is email.</p>
+          <div class="contact-actions">
+            <button class="email-copy" id="copy-email" data-email="prajwalnarayanaswamy8@gmail.com">
+              <span class="mono">prajwalnarayanaswamy8@gmail.com</span>
+              <span class="copy-label">Copy</span>
+            </button>
+            <a class="btn btn-primary" href="mailto:prajwalnarayanaswamy8@gmail.com">Send an email</a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/prajwal-narayanaswamy-2025041a0/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn btn-ghost" href="https://github.com/prajwaln18tech" target="_blank" rel="noopener">GitHub</a>
+            <button class="btn btn-ghost" id="vcard" type="button">Save contact (.vcf)</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COLOPHON ============ -->
+    <section class="section colophon" id="colophon">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <p class="eyebrow"><span>08</span> Under the hood</p>
+          <h2>This page, <em>measured</em>.</h2>
+          <p class="sec-sub">Real numbers from your visit, read from the browser’s Performance APIs — not a screenshot of a Lighthouse score.</p>
+        </div>
+        <div class="col-grid">
+          <dl class="vitals card reveal">
+            <div><dt>Page load</dt><dd data-m="load">—</dd></div>
+            <div><dt>Time to first byte</dt><dd data-m="ttfb">—</dd></div>
+            <div><dt>Largest contentful paint</dt><dd data-m="lcp">—</dd></div>
+            <div><dt>Cumulative layout shift</dt><dd data-m="cls">—</dd></div>
+            <div><dt>Page weight</dt><dd><span data-m="weight">—</span><small data-m="weight-note"></small></dd></div>
+            <div><dt>Requests</dt><dd data-m="requests">—</dd></div>
+            <div><dt>First-party JS</dt><dd data-m="js">—</dd></div>
+            <div><dt>Service worker</dt><dd data-m="sw">—</dd></div>
+          </dl>
+          <div class="built card reveal">
+            <h3>How it’s built</h3>
+            <ul>
+              <li><b>Zero frameworks.</b> Semantic HTML, modern CSS and small native ES modules. No bundler, no build step.</li>
+              <li><b>Private by default.</b> No analytics, no cookies, no third-party trackers.</li>
+              <li><b>Accessible.</b> Skip link, visible focus, ARIA live regions, full keyboard control, and it respects reduced-motion.</li>
+              <li><b>Offline-ready.</b> A network-first service worker keeps the page available without a connection.</li>
+              <li><b>On-device ML.</b> Semantic search runs Transformers.js on WebAssembly, and passage vectors are cached by content hash.</li>
+            </ul>
+            <div class="built-actions">
+              <a class="btn btn-ghost btn-sm" href="https://github.com/prajwaln18tech/portfolio" target="_blank" rel="noopener">View source ↗</a>
+              <button class="btn btn-ghost btn-sm" id="keys-open" type="button">Keyboard shortcuts <kbd>?</kbd></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap foot">
+      <p>© <span id="year">2026</span> Prajwal Narayanaswamy</p>
+      <p class="mono">Hand-built · no frameworks · press <kbd>⌘K</kbd> or <kbd>?</kbd></p>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- Command palette -->
+  <div class="cmdk" id="cmdk" role="dialog" aria-modal="true" aria-label="Command menu" hidden>
+    <div class="cmdk-panel">
+      <div class="cmdk-input">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="cmdk-q" type="text" placeholder="Type a command or search…" autocomplete="off" spellcheck="false" aria-label="Search commands">
+        <kbd>esc</kbd>
+      </div>
+      <ul class="cmdk-list" id="cmdk-list" role="listbox"></ul>
+    </div>
+  </div>
+
+  <!-- Keyboard shortcuts -->
+  <div class="cmdk keys" id="keys" role="dialog" aria-modal="true" aria-labelledby="keys-title" hidden>
+    <div class="cmdk-panel keys-panel">
+      <header><h2 id="keys-title">Keyboard shortcuts</h2><button class="icon-btn keys-close" type="button" aria-label="Close">✕</button></header>
+      <dl>
+        <div><dt><kbd>⌘K</kbd></dt><dd>Command menu</dd></div>
+        <div><dt><kbd>/</kbd></dt><dd>Ask my résumé</dd></div>
+        <div><dt><kbd>`</kbd></dt><dd>Focus the terminal</dd></div>
+        <div><dt><kbd>t</kbd></dt><dd>Toggle theme</dd></div>
+        <div><dt><kbd>g</kbd> <kbd>a</kbd> / <kbd>e</kbd> / <kbd>w</kbd> / <kbd>q</kbd></dt><dd>About · Experience · Work · Ask</dd></div>
+        <div><dt><kbd>g</kbd> <kbd>s</kbd> / <kbd>d</kbd> / <kbd>c</kbd> / <kbd>u</kbd></dt><dd>Stack · Education · Contact · Under the hood</dd></div>
+        <div><dt><kbd>g</kbd> <kbd>h</kbd></dt><dd>Back to top</dd></div>
+        <div><dt><kbd>?</kbd></dt><dd>This panel</dd></div>
+      </dl>
+      <p class="keys-foot mono">psst — the terminal has a few hidden commands.</p>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="icon-btn lb-close" aria-label="Close">✕</button>
+    <img src="images/nasa.jpg" alt="International Space Development Conference Student Achievement Award certificate">
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
