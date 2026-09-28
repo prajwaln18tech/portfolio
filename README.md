@@ -1,6 +1,6 @@
 # Prajwal Narayanaswamy — Portfolio
 
-**Live:** https://prajwal-narayanaswamy.vercel.app
+**Live:** https://prajwalnarayanaswamy.com
 
 Personal site of Prajwal Narayanaswamy, a software engineer working on AI/LLM features, full-stack web apps and cloud platforms.
 
