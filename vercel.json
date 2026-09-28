@@ -2,25 +2,14 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [
         {
           "type": "host",
           "value": "prajwal-narayanaswamy.vercel.app"
         }
       ],
-      "destination": "https://prajwalnarayanaswamy.com/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.prajwalnarayanaswamy.com"
-        }
-      ],
-      "destination": "https://prajwalnarayanaswamy.com/:path*",
+      "destination": "https://prajwalnarayanaswamy.com/$1",
       "permanent": true
     }
   ],
