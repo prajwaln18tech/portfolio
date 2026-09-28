@@ -8,6 +8,7 @@ export const PROFILE = {
   linkedin: 'https://www.linkedin.com/in/prajwal-narayanaswamy-2025041a0/',
   resume: 'assets/Prajwal_Narayanaswamy_Resume.pdf',
   paper: 'https://dl.acm.org/doi/abs/10.5555/3787712.3787735',
+  narratorCode: 'https://gitlab.com/prajwalnec053/ai-assisted_contextual_code_narration_project',
   repo: 'https://github.com/prajwaln18tech/portfolio',
 };
 
@@ -43,13 +44,14 @@ export const PUBLICATIONS = [
     authors: 'P. Narayanaswamy, A. Attarwala, P. Viotti, J. Raigoza, E. Lindoo',
     venue: 'Journal of Computing Sciences in Colleges 41(4), pp. 77–89 · Sep 2025',
     url: 'https://dl.acm.org/doi/abs/10.5555/3787712.3787735',
+    code: 'https://gitlab.com/prajwalnec053/ai-assisted_contextual_code_narration_project',
   },
 ];
 
 export const PROJECTS = [
   { name: 'World’s Edge Price Tool', what: 'Game-pricing intelligence across 92 markets / 47 currencies', stack: 'FastAPI · React 19 · Azure' },
   { name: 'World’s Edge Review Tool', what: 'AI analytics over 100K+ reviews in 29 languages', stack: 'Sentence-Transformers · RAG · Azure OpenAI' },
-  { name: 'Accessible Code Narrator', what: 'VS Code extension narrating code for visually impaired devs · published in JCSC 2025', stack: 'TypeScript · GPT-4 · ElevenLabs' },
+  { name: 'Accessible Code Narrator', what: 'VS Code extension narrating code for visually impaired devs · published in JCSC 2025', stack: 'TypeScript · Python · GPT-4 · ElevenLabs' },
   { name: 'Multiplayer Chess Platform', what: 'Real-time chess, <100ms latency, 500+ concurrent users', stack: 'Django Channels · WebSockets · GKE' },
 ];
 
@@ -75,7 +77,7 @@ export const KB = [
   { id: 'cts-1', section: 'experience', title: 'Cognizant — ETL', text: 'From November 2021 to July 2022 he was a Programmer Analyst Trainee at Cognizant in Bengaluru, developing complex ETL workflows in Informatica PowerCenter that loaded large datasets from flat files, Oracle, SQL Server and mainframe systems into data warehouses.' },
   { id: 'cts-2', section: 'experience', title: 'Cognizant — performance & data quality', text: 'At Cognizant he optimized ETL performance with session partitioning, pushdown optimization and parallel processing, applied SQL validation and cleansing rules for data quality, and did root cause analysis of pipeline failures through log analysis and SQL tuning, working with data architects, business analysts and QA teams.' },
 
-  { id: 'narrator', section: 'work', title: 'Accessible Code Narrator', text: 'Accessible Code Narrator is a VS Code extension that narrates code for blind and visually impaired developers, built with TypeScript (Node.js), the GPT-4 LLM and the ElevenLabs text-to-speech API, reaching 95% code-to-speech accuracy. It explains code structure first, such as a conditional nested several levels deep, and then reads each line in that context, using two distinct voices: one reads code verbatim, the other gives contextual explanations.' },
+  { id: 'narrator', section: 'work', title: 'Accessible Code Narrator', text: 'Accessible Code Narrator is a VS Code extension that narrates C++ code for blind and visually impaired developers. The TypeScript extension drives a Python pipeline that uses the GPT-4 LLM for structure-first explanations and the ElevenLabs text-to-speech API for two distinct voices (one reads code verbatim, the other gives context), stitched together with ffmpeg, reaching 95% code-to-speech accuracy. The source code is on GitLab.' },
   { id: 'paper', section: 'education', title: 'Publication — JCSC 2025', text: 'Prajwal is first author of the peer-reviewed research paper "AI-Assisted Contextual Code Narration for the Visually Impaired", published in the Journal of Computing Sciences in Colleges, volume 41, issue 4, pages 77–89, in September 2025 (ACM Digital Library), with co-authors Abbas Attarwala, Paul Viotti, Jaime Raigoza and Ed Lindoo. The research uses large language models and prompt engineering to make source code accessible to blind programmers.' },
   { id: 'chess', section: 'work', title: 'Multiplayer Chess Platform', text: 'He built a cloud-native real-time multiplayer chess platform with Django Channels and WebSockets, with under 100ms latency and 500+ concurrent users, deployed on Google Cloud (GCP) Kubernetes with 99.9% uptime.' },
 

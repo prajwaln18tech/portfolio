@@ -87,7 +87,8 @@ export function initTerminal({ el, actions }) {
           line(span('ok', '📄 '), span('c', p.title));
           print(`   ${p.authors}`, 'dim');
           print(`   ${p.venue}`, 'k');
-          line(span('', '   '), link(p.url, 'read on ACM Digital Library'), span('dim', '  ·  try `cat paper.bib`'));
+          line(span('', '   '), link(p.url, 'read on ACM Digital Library'), span('dim', '  ·  '), link(p.code, 'source on GitLab'));
+          print('   try `cat paper.bib` for the citation', 'dim');
         });
       },
     },

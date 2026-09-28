@@ -5,19 +5,20 @@
 // browser's Web Speech API, with timed captions as a fallback when audio is off or unavailable.
 
 const SCRIPT = [
-  { v: 'ctx', scope: [1, 8], say: 'Function ship takes one parameter, build. Its body is a conditional nested three levels deep, followed by a return.' },
-  { v: 'code', line: 1, say: 'def ship(build):', speak: 'def ship, build.' },
-  { v: 'ctx', scope: [2, 7], say: 'Level one: continue only if the tests pass.' },
-  { v: 'code', line: 2, say: 'if build.tests_pass:', speak: 'if build dot tests pass.' },
-  { v: 'ctx', scope: [3, 7], say: 'Level two, inside it: check accessibility.' },
-  { v: 'code', line: 3, say: 'if build.accessible:', speak: 'if build dot accessible.' },
+  { v: 'ctx', scope: [1, 11], say: 'Function ship takes a Build by reference and returns a Status. Its body is a conditional nested three levels deep, followed by a return.' },
+  { v: 'code', line: 1, say: 'Status ship(Build& build) {', speak: 'Status ship, Build reference build.' },
+  { v: 'ctx', scope: [2, 9], say: 'Level one: continue only if the tests pass.' },
+  { v: 'code', line: 2, say: 'if (build.testsPass) {', speak: 'if build dot tests pass.' },
+  { v: 'ctx', scope: [3, 8], say: 'Level two, inside it: check accessibility.' },
+  { v: 'code', line: 3, say: 'if (build.accessible) {', speak: 'if build dot accessible.' },
   { v: 'ctx', scope: [4, 7], say: 'Level three, the innermost: if approved, deploy. Otherwise, request a review.' },
-  { v: 'code', line: 4, say: 'if build.approved:', speak: 'if build dot approved.' },
-  { v: 'code', line: 5, say: 'deploy(build)', speak: 'deploy, build.' },
-  { v: 'code', line: 6, say: 'else:', speak: 'else.' },
-  { v: 'code', line: 7, say: 'request_review(build)', speak: 'request review, build.' },
-  { v: 'ctx', scope: [8, 8], say: 'Back at the function level, after all three conditions: return the build status.' },
-  { v: 'code', line: 8, say: 'return build.status', speak: 'return build dot status.' },
+  { v: 'code', line: 4, say: 'if (build.approved)', speak: 'if build dot approved.' },
+  { v: 'code', line: 5, say: 'deploy(build);', speak: 'deploy, build.' },
+  { v: 'code', line: 6, say: 'else', speak: 'else.' },
+  { v: 'code', line: 7, say: 'requestReview(build);', speak: 'request review, build.' },
+  { v: 'ctx', scope: [8, 9], say: 'That closes levels two and one.' },
+  { v: 'ctx', scope: [10, 10], say: 'Back at the function level: return the build status.' },
+  { v: 'code', line: 10, say: 'return build.status;', speak: 'return build dot status.' },
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

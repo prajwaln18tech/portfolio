@@ -65,6 +65,14 @@
         "pagination": "77-89",
         "publisher": { "@type": "Organization", "name": "Consortium for Computing Sciences in Colleges" },
         "url": "https://dl.acm.org/doi/abs/10.5555/3787712.3787735"
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "AI-Assisted Contextual Code Narration",
+        "description": "VS Code extension that narrates C++ code for blind and visually impaired programmers using OpenAI and ElevenLabs.",
+        "codeRepository": "https://gitlab.com/prajwalnec053/ai-assisted_contextual_code_narration_project",
+        "programmingLanguage": ["TypeScript", "Python"],
+        "author": { "@id": "https://prajwal-narayanaswamy.vercel.app/#me" }
       }
     ]
   }
@@ -391,34 +399,37 @@
               <span>JCSC 41(4) · 2025 · First author</span>
             </a>
             <h3>Accessible Code Narrator</h3>
-            <p>Screen readers such as JAWS read code word by word, top to bottom, and lose its structure. This VS Code extension uses an OpenAI LLM with engineered prompts to explain the <em>shape</em> of the code first, such as “a conditional nested three levels deep”, and then walks through each line in that context.</p>
-            <p>Two ElevenLabs voices keep it unambiguous: one reads the code verbatim, the other explains it.</p>
+            <p>Screen readers such as JAWS read code word by word, top to bottom, and lose its structure. This VS Code extension narrates C++: it uses an OpenAI LLM with engineered prompts to explain the <em>shape</em> of the code first, such as “a conditional nested three levels deep”, and then walks through each line in that context.</p>
+            <p>A Python pipeline voices it with two ElevenLabs voices, one reading the code verbatim and one explaining it, then stitches the audio with ffmpeg.</p>
             <ul class="kv">
               <li><b>2</b><span>voices: code vs. context</span></li>
               <li><b>95%</b><span>code-to-speech accuracy</span></li>
               <li><b>1st</b><span>author, 5-person team</span></li>
               <li><b>pp. 77–89</b><span>Journal of Computing Sciences in Colleges</span></li>
             </ul>
-            <ul class="chips"><li>TypeScript</li><li>VS Code API</li><li>OpenAI GPT-4</li><li>Prompt engineering</li><li>ElevenLabs TTS</li></ul>
+            <ul class="chips"><li>TypeScript</li><li>Python</li><li>VS Code API</li><li>OpenAI GPT-4</li><li>Prompt engineering</li><li>ElevenLabs TTS</li><li>ffmpeg</li></ul>
             <div class="case-actions">
               <a class="btn btn-primary btn-sm" href="https://dl.acm.org/doi/abs/10.5555/3787712.3787735" target="_blank" rel="noopener">Read the paper ↗</a>
-              <a class="btn btn-ghost btn-sm" href="https://github.com/prajwaln18tech/AI-Assisted_Contextual_Code_Narration" target="_blank" rel="noopener">Source code ↗</a>
+              <a class="btn btn-ghost btn-sm" href="https://gitlab.com/prajwalnec053/ai-assisted_contextual_code_narration_project" target="_blank" rel="noopener">Source code on GitLab ↗</a>
             </div>
           </div>
           <div class="case-visual narr" id="narr" data-voice="">
             <div class="narr-bar">
-              <span class="narr-file mono">ship.py</span>
+              <span class="narr-file mono">ship.cpp</span>
               <span class="narr-legend mono"><span class="lg lg-ctx">Context voice</span><span class="lg lg-code">Code voice</span></span>
             </div>
-            <ol class="narr-code mono" aria-label="Example code being narrated">
-              <li style="--d:0"><span class="kw">def</span> <span class="fn">ship</span>(build):</li>
-              <li style="--d:1"><span class="ind"></span><span class="kw">if</span> build.<span class="at">tests_pass</span>:</li>
-              <li style="--d:2"><span class="ind"></span><span class="kw">if</span> build.<span class="at">accessible</span>:</li>
-              <li style="--d:3"><span class="ind"></span><span class="kw">if</span> build.<span class="at">approved</span>:</li>
-              <li style="--d:4"><span class="ind"></span><span class="fn">deploy</span>(build)</li>
-              <li style="--d:3"><span class="ind"></span><span class="kw">else</span>:</li>
-              <li style="--d:4"><span class="ind"></span><span class="fn">request_review</span>(build)</li>
-              <li style="--d:1"><span class="ind"></span><span class="kw">return</span> build.<span class="at">status</span></li>
+            <ol class="narr-code mono" aria-label="Example C++ code being narrated">
+              <li style="--d:0"><span class="ty">Status</span> <span class="fn">ship</span>(<span class="ty">Build</span>&amp; build) {</li>
+              <li style="--d:1"><span class="ind"></span><span class="kw">if</span> (build.<span class="at">testsPass</span>) {</li>
+              <li style="--d:2"><span class="ind"></span><span class="kw">if</span> (build.<span class="at">accessible</span>) {</li>
+              <li style="--d:3"><span class="ind"></span><span class="kw">if</span> (build.<span class="at">approved</span>)</li>
+              <li style="--d:4"><span class="ind"></span><span class="fn">deploy</span>(build);</li>
+              <li style="--d:3"><span class="ind"></span><span class="kw">else</span></li>
+              <li style="--d:4"><span class="ind"></span><span class="fn">requestReview</span>(build);</li>
+              <li style="--d:2"><span class="ind"></span>}</li>
+              <li style="--d:1"><span class="ind"></span>}</li>
+              <li style="--d:1"><span class="ind"></span><span class="kw">return</span> build.<span class="at">status</span>;</li>
+              <li style="--d:0">}</li>
             </ol>
             <div class="narr-caption" aria-live="polite">
               <span class="narr-who mono">Ready</span>
@@ -555,6 +566,7 @@
           </div>
           <div class="pub-side">
             <a class="btn btn-primary btn-sm" href="https://dl.acm.org/doi/abs/10.5555/3787712.3787735" target="_blank" rel="noopener">View on ACM DL ↗</a>
+            <a class="btn btn-ghost btn-sm" href="https://gitlab.com/prajwalnec053/ai-assisted_contextual_code_narration_project" target="_blank" rel="noopener">Source code ↗</a>
             <button class="btn btn-ghost btn-sm" type="button" data-cite="bibtex">Copy BibTeX</button>
             <button class="btn btn-ghost btn-sm" type="button" data-cite="apa">Copy APA</button>
             <a class="pub-demo" href="#narrator">Hear the technique in action →</a>

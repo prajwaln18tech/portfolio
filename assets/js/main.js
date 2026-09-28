@@ -71,6 +71,7 @@ const palette = initPalette({
     { g: 'Try it', ic: '♪', label: 'Hear the code narration demo', k: 'accessibility voice paper', run: () => narrator.play() },
     { g: 'Research', ic: '📄', label: 'Read the paper on ACM DL', hint: 'JCSC 2025', k: 'publication research acm', run: open(PROFILE.paper) },
     { g: 'Research', ic: '⎘', label: 'Copy BibTeX citation', k: 'publication cite', run: () => copyCitation('bibtex') },
+    { g: 'Research', ic: '↗', label: 'Code Narrator source on GitLab', k: 'repo code accessibility', run: open(PROFILE.narratorCode) },
     { g: 'Actions', ic: '@', label: 'Copy email address', hint: PROFILE.email, run: copyEmail },
     { g: 'Actions', ic: '↓', label: 'Open résumé (PDF)', k: 'resume cv', run: open(PROFILE.resume) },
     { g: 'Actions', ic: '⎘', label: 'Download contact card (vCard)', k: 'vcf', run: vcard },

@@ -21,7 +21,7 @@ It is hand-built with semantic HTML, modern CSS and native ES modules. There is 
 
 ## Publication
 
-P. Narayanaswamy, A. Attarwala, P. Viotti, J. Raigoza, E. Lindoo. **AI-Assisted Contextual Code Narration for the Visually Impaired.** *Journal of Computing Sciences in Colleges* 41(4), 77–89, September 2025. [ACM Digital Library](https://dl.acm.org/doi/abs/10.5555/3787712.3787735)
+P. Narayanaswamy, A. Attarwala, P. Viotti, J. Raigoza, E. Lindoo. **AI-Assisted Contextual Code Narration for the Visually Impaired.** *Journal of Computing Sciences in Colleges* 41(4), 77–89, September 2025. [ACM Digital Library](https://dl.acm.org/doi/abs/10.5555/3787712.3787735) · [Source code (GitLab)](https://gitlab.com/prajwalnec053/ai-assisted_contextual_code_narration_project)
 
 ## Run locally
 

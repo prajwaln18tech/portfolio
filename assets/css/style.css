@@ -761,7 +761,7 @@ main, .footer, .nav { position: relative; z-index: 2; }
 .lg::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: 0; }
 .lg-ctx::before { background: var(--ctx-c); }
 .lg-code::before { background: var(--code-c); }
-.narr-code { counter-reset: ln; padding: 14px 0; font-size: 13.5px; line-height: 1.85; background: var(--bg); }
+.narr-code { counter-reset: ln; padding: 14px 0; font-size: 13.5px; line-height: 1.85; background: var(--bg); overflow-x: auto; }
 .narr-code li {
   counter-increment: ln; position: relative; padding: 0 16px 0 52px; white-space: pre; color: var(--text-2);
   transition: background .25s, color .25s, box-shadow .25s;
@@ -774,6 +774,7 @@ main, .footer, .nav { position: relative; z-index: 2; }
 .narr-code .kw { color: var(--accent); }
 .narr-code .fn { color: var(--accent-2); }
 .narr-code .at { color: var(--c3); }
+.narr-code .ty { color: var(--c4); }
 .narr-code li.scope { background: color-mix(in srgb, var(--ctx-c) 9%, transparent); box-shadow: inset 3px 0 0 var(--ctx-c); }
 .narr-code li.speaking { background: color-mix(in srgb, var(--code-c) 16%, transparent); box-shadow: inset 3px 0 0 var(--code-c); color: var(--text); }
 .narr-caption {
