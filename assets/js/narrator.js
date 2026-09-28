@@ -1,122 +1,144 @@
-// Structure-first, two-voice code narration: the technique from
-// "AI-Assisted Contextual Code Narration for the Visually Impaired" (JCSC 41(4), 2025).
-// A context voice explains structure before a code voice reads each line verbatim.
-// The script is pre-written in the style the extension's LLM prompts produce; speech uses the
-// browser's Web Speech API, with timed captions as a fallback when audio is off or unavailable.
+// Accessible Code Narrator demo — real recordings from the tool.
+// The audio is the tool's own output from its 2025 run on a C++ binary search: for every line, Rachel
+// (ElevenLabs) reads the code verbatim, then Andy (ElevenLabs) explains it in context. Both scripts were
+// written by GPT from the project's prompts (narrate_backend.py, male_narrate.py); stitch_audio.py plays
+// them as line N (Rachel) → line N (Andy) → line N+1 …, which is exactly the order used here.
+// Captions are Whisper transcripts of the recordings, proofread against the code.
+import { PROGRAM } from './narration.js';
 
-const SCRIPT = [
-  { v: 'ctx', scope: [1, 11], say: 'Function ship takes a Build by reference and returns a Status. Its body is a conditional nested three levels deep, followed by a return.' },
-  { v: 'code', line: 1, say: 'Status ship(Build& build) {', speak: 'Status ship, Build reference build.' },
-  { v: 'ctx', scope: [2, 9], say: 'Level one: continue only if the tests pass.' },
-  { v: 'code', line: 2, say: 'if (build.testsPass) {', speak: 'if build dot tests pass.' },
-  { v: 'ctx', scope: [3, 8], say: 'Level two, inside it: check accessibility.' },
-  { v: 'code', line: 3, say: 'if (build.accessible) {', speak: 'if build dot accessible.' },
-  { v: 'ctx', scope: [4, 7], say: 'Level three, the innermost: if approved, deploy. Otherwise, request a review.' },
-  { v: 'code', line: 4, say: 'if (build.approved)', speak: 'if build dot approved.' },
-  { v: 'code', line: 5, say: 'deploy(build);', speak: 'deploy, build.' },
-  { v: 'code', line: 6, say: 'else', speak: 'else.' },
-  { v: 'code', line: 7, say: 'requestReview(build);', speak: 'request review, build.' },
-  { v: 'ctx', scope: [8, 9], say: 'That closes levels two and one.' },
-  { v: 'ctx', scope: [10, 10], say: 'Back at the function level: return the build status.' },
-  { v: 'code', line: 10, say: 'return build.status;', speak: 'return build dot status.' },
-];
-
+const AUDIO = 'assets/audio/narrator/';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const esc = (t) => t.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+
+// Minimal C++ highlighter: enough for the demo program.
+const KW = /\b(int|void|return|if|else|while|for|using|namespace|include)\b/g;
+function highlight(code) {
+  if (/^\s*\/\//.test(code)) return `<span class="cm">${esc(code)}</span>`;
+  if (/^\s*#/.test(code)) return `<span class="pp">${esc(code)}</span>`;
+  const parts = code.split(/("[^"]*")/);
+  return parts.map((part, i) => {
+    if (i % 2) return `<span class="str">${esc(part)}</span>`;
+    return esc(part)
+      .replace(KW, '<span class="kw">$1</span>')
+      .replace(/\b(cout|cin|endl|std)\b/g, '<span class="at">$1</span>')
+      .replace(/\b([A-Za-z_]\w*)(?=\()/g, (m, name) => (/^(if|while|for|sizeof)$/.test(name) ? m : `<span class="fn">${name}</span>`))
+      .replace(/\b(\d+)\b/g, '<span class="num">$1</span>');
+  }).join('');
+}
 
 export function initNarrator({ root }) {
-  const lines = [...root.querySelectorAll('.narr-code li')];
+  const list = root.querySelector('.narr-code');
   const play = root.querySelector('.narr-play');
   const soundBtn = root.querySelector('.narr-sound');
   const who = root.querySelector('.narr-who');
   const text = root.querySelector('.narr-text');
-  const synth = 'speechSynthesis' in window ? window.speechSynthesis : null;
-  let sound = !!synth;
-  let run = 0; // incremented to cancel an in-flight playback
+  const prog = root.querySelector('.narr-prog i');
+  const { lines } = PROGRAM;
+  const audio = new Audio();
+  audio.preload = 'auto';
+  let muted = false;
+  let run = 0;          // bumped to cancel an in-flight playback
+  let resumeAt = 0;
 
-  if (!synth) { soundBtn.hidden = true; }
+  // Render the program. Each line is a button: tap to start narrating from there.
+  lines.forEach((l, i) => {
+    const li = document.createElement('li');
+    li.style.setProperty('--d', l.d);
+    li.tabIndex = 0;
+    li.setAttribute('role', 'button');
+    li.setAttribute('aria-label', `Play from line ${i + 1}: ${l.code.trim() || 'blank line'}`);
+    li.innerHTML = (l.d ? '<span class="ind"></span>' : '') + (highlight(l.code.trim()) || '&nbsp;');
+    li.addEventListener('click', () => start(i));
+    li.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); start(i); } });
+    list.append(li);
+  });
+  const items = [...list.children];
+
   const setSound = (on) => {
-    sound = on && !!synth;
-    soundBtn.setAttribute('aria-pressed', String(sound));
-    soundBtn.textContent = sound ? '🔊 Sound on' : '🔇 Captions only';
-    if (!sound && synth) synth.cancel();
+    muted = !on;
+    audio.muted = muted;
+    soundBtn.setAttribute('aria-pressed', String(on));
+    soundBtn.textContent = on ? '🔊 Sound on' : '🔇 Captions only';
   };
-  soundBtn.addEventListener('click', () => setSound(!sound));
+  soundBtn.addEventListener('click', () => setSound(muted));
 
-  // Mirror the paper's pairing: one voice for code, a different one for context.
-  const pickVoices = () => {
-    // Skip macOS novelty voices so a fallback never picks "Bubbles" or "Bad News".
-    const NOVELTY = /Albert|Bad News|Bahh|Bells|Boing|Bubbles|Cellos|Good News|Jester|Organ|Superstar|Trinoids|Whisper|Wobble|Zarvox|Junior|Ralph|Kathy|Grandma|Grandpa|Eddy|Flo|Reed|Rocko|Sandy|Shelley/;
-    const all = synth ? synth.getVoices().filter((v) => /^en([-_]|$)/i.test(v.lang) && !NOVELTY.test(v.name)) : [];
-    const find = (names) => all.find((v) => names.some((n) => v.name.includes(n)));
-    const code = find(['Samantha', 'Google US English', 'Microsoft Aria', 'Microsoft Jenny', 'Karen', 'Moira', 'Tessa']) || all[0] || null;
-    const ctx = find(['Daniel', 'Google UK English Male', 'Microsoft Guy', 'Microsoft Davis', 'Rishi', 'Alex', 'Fred'])
-      || all.find((v) => v !== code) || code;
-    return { code, ctx };
+  const focusLine = (i) => {
+    // Measure against the list itself (offsetTop depends on which ancestor is positioned, which varies by layout).
+    const li = items[i].getBoundingClientRect(), box = list.getBoundingClientRect();
+    list.scrollTo({ top: list.scrollTop + (li.top - box.top) - box.height / 2 + li.height / 2, behavior: 'smooth' });
   };
 
-  const show = (step) => {
-    root.dataset.voice = step ? step.v : '';
-    lines.forEach((li, i) => {
-      const n = i + 1;
-      li.classList.toggle('speaking', !!step && step.line === n);
-      li.classList.toggle('scope', !!step && !!step.scope && n >= step.scope[0] && n <= step.scope[1]);
+  const show = (i, voice) => {
+    root.dataset.voice = voice ? (voice === 'r' ? 'code' : 'ctx') : '';
+    items.forEach((li, j) => {
+      li.classList.toggle('speaking', voice === 'r' && j === i);
+      li.classList.toggle('scope', voice === 'a' && j === i);
     });
-    if (!step) return;
-    who.textContent = step.v === 'code' ? 'Code voice' : 'Context voice';
-    text.textContent = step.say;
-    text.classList.toggle('is-code', step.v === 'code');
+    if (!voice) return;
+    const l = lines[i];
+    who.textContent = voice === 'r' ? `Rachel · reads line ${i + 1}` : `Andy · explains line ${i + 1}`;
+    text.textContent = voice === 'r' ? `Line ${i + 1}: ${l.code.trim() || '(blank line)'}` : l.andy;
+    text.classList.toggle('is-code', voice === 'r');
+    focusLine(i);
   };
 
-  const speak = (step, voices, id) => new Promise((resolve) => {
-    const words = step.say.split(/\s+/).length;
-    const quiet = Math.max(1300, words * 340);
-    if (!sound) { sleep(quiet).then(resolve); return; }
-    const u = new SpeechSynthesisUtterance(step.speak || step.say);
-    const voice = voices[step.v];
-    if (voice) u.voice = voice;
-    // Pitch keeps the two roles distinct even if the device only has one voice.
-    u.pitch = step.v === 'code' ? 1.15 : 0.85;
-    u.rate = step.v === 'code' ? 0.98 : 1.03;
-    let settled = false;
-    const done = () => { if (!settled) { settled = true; clearTimeout(guard); resolve(); } };
-    const guard = setTimeout(done, quiet + 5000); // some engines never fire onend
-    u.onend = done;
-    u.onerror = done;
-    if (id === run) synth.speak(u); else done();
+  // Play one recording; resolves when it ends. Falls back to timed captions if audio can't play.
+  const clip = (i, voice, id) => new Promise((resolve) => {
+    const secs = lines[i][voice === 'r' ? 'rs' : 'as'];
+    let done = false;
+    const finish = () => { if (done) return; done = true; audio.onended = audio.onerror = audio.ontimeupdate = null; resolve(); };
+    const timed = () => {
+      const t0 = performance.now();
+      const tick = () => {
+        if (done || id !== run) return finish();
+        const p = (performance.now() - t0) / (secs * 1000);
+        prog.style.transform = `scaleX(${Math.min(p, 1)})`;
+        p >= 1 ? finish() : requestAnimationFrame(tick);
+      };
+      tick();
+    };
+    audio.src = `${AUDIO}${voice}${String(i + 1).padStart(2, '0')}.m4a`;
+    audio.onended = finish;
+    audio.onerror = () => { audio.onerror = null; timed(); };
+    audio.ontimeupdate = () => { if (audio.duration) prog.style.transform = `scaleX(${audio.currentTime / audio.duration})`; };
+    audio.play().catch(() => timed());
   });
 
   const stop = () => {
     run++;
-    if (synth) synth.cancel();
+    audio.pause();
     root.classList.remove('playing');
-    play.textContent = '▶ Hear the narration';
-    show(null);
+    prog.style.transform = 'scaleX(0)';
+    play.textContent = resumeAt > 0 && resumeAt < lines.length ? `▶ Resume from line ${resumeAt + 1}` : '▶ Play the narration';
   };
 
-  const start = async () => {
+  const start = async (from = resumeAt) => {
     const id = ++run;
+    audio.pause();
     root.classList.add('playing');
     play.textContent = '■ Stop';
-    if (synth) synth.cancel();
-    const voices = pickVoices();
-    for (const step of SCRIPT) {
-      if (id !== run) return;
-      show(step);
-      await speak(step, voices, id);
-      if (id !== run) return;
-      await sleep(step.v === 'ctx' ? 260 : 140);
+    for (let i = from >= lines.length ? 0 : from; i < lines.length; i++) {
+      resumeAt = i;
+      for (const voice of ['r', 'a']) {
+        if (id !== run) return;
+        show(i, voice);
+        await clip(i, voice, id);
+        if (id !== run) return;
+        await sleep(voice === 'r' ? 250 : 450);
+      }
     }
     if (id !== run) return;
+    resumeAt = 0;
     stop();
+    show(-1, null);
     who.textContent = 'Done';
-    text.textContent = 'Structure first, then each line in context. Play it again, or read the paper.';
+    text.textContent = 'That was the tool’s real output, line by line. Tap any line to hear it again.';
   };
 
   play.addEventListener('click', () => (root.classList.contains('playing') ? stop() : start()));
-  if (synth) synth.getVoices(); // Chrome loads voices lazily; asking early warms the list
 
   // Don't keep talking after the visitor scrolls away.
-  new IntersectionObserver((es) => { if (!es[0].isIntersecting && root.classList.contains('playing')) stop(); }, { threshold: 0 }).observe(root);
+  new IntersectionObserver((es) => { if (!es[0].isIntersecting && root.classList.contains('playing')) stop(); }).observe(root);
 
   return { play: () => { root.scrollIntoView({ behavior: 'smooth', block: 'center' }); if (!root.classList.contains('playing')) start(); } };
 }

@@ -1,6 +1,6 @@
 // Service worker: precache the shell, then network-first so the live site is always fresh
 // and the cached copy is only used when offline.
-const CACHE = 'pn-portfolio-v7';
+const CACHE = 'pn-portfolio-v8';
 const SHELL = [
   './',
   './index.html',
@@ -20,6 +20,7 @@ const SHELL = [
   './assets/js/confetti.js',
   './assets/js/embed-worker.js',
   './assets/js/narrator.js',
+  './assets/js/narration.js',
   './assets/icons/icon.svg',
   './images/portrait-cutout.webp',
   './images/avatar.webp',
@@ -46,6 +47,7 @@ self.addEventListener('fetch', (e) => {
   const url = new URL(request.url);
   const sameOrigin = url.origin === self.location.origin;
   if (!sameOrigin && !FONTS.test(request.url)) return; // model weights etc. are cached by Transformers.js itself
+  if (url.pathname.includes('/assets/audio/')) return; // media uses range requests; let the browser handle it
 
   e.respondWith(
     fetch(request)

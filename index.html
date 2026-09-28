@@ -399,8 +399,8 @@
               <span>JCSC 41(4) · 2025 · First author</span>
             </a>
             <h3>Accessible Code Narrator</h3>
-            <p>Screen readers such as JAWS read code word by word, top to bottom, and lose its structure. This VS Code extension narrates C++: it uses an OpenAI LLM with engineered prompts to explain the <em>shape</em> of the code first, such as “a conditional nested three levels deep”, and then walks through each line in that context.</p>
-            <p>A Python pipeline voices it with two ElevenLabs voices, one reading the code verbatim and one explaining it, then stitches the audio with ffmpeg.</p>
+            <p>Screen readers such as JAWS read code word by word, top to bottom, and lose its structure. This VS Code extension narrates C++ so that the <em>structure</em> comes through: engineered prompts have an OpenAI LLM explain every line in context, such as which loop it belongs to, how many times it runs and what a condition decides.</p>
+            <p>A Python pipeline gives it two ElevenLabs voices. For each line, Rachel reads the code exactly as written, then Andy explains it, and ffmpeg stitches the pairs into one track.</p>
             <ul class="kv">
               <li><b>2</b><span>voices: code vs. context</span></li>
               <li><b>95%</b><span>code-to-speech accuracy</span></li>
@@ -415,32 +415,21 @@
           </div>
           <div class="case-visual narr" id="narr" data-voice="">
             <div class="narr-bar">
-              <span class="narr-file mono">ship.cpp</span>
-              <span class="narr-legend mono"><span class="lg lg-ctx">Context voice</span><span class="lg lg-code">Code voice</span></span>
+              <span class="narr-file mono">binary_search.cpp</span>
+              <span class="narr-legend mono"><span class="lg lg-code">Rachel · code</span><span class="lg lg-ctx">Andy · context</span></span>
             </div>
-            <ol class="narr-code mono" aria-label="Example C++ code being narrated">
-              <li style="--d:0"><span class="ty">Status</span> <span class="fn">ship</span>(<span class="ty">Build</span>&amp; build) {</li>
-              <li style="--d:1"><span class="ind"></span><span class="kw">if</span> (build.<span class="at">testsPass</span>) {</li>
-              <li style="--d:2"><span class="ind"></span><span class="kw">if</span> (build.<span class="at">accessible</span>) {</li>
-              <li style="--d:3"><span class="ind"></span><span class="kw">if</span> (build.<span class="at">approved</span>)</li>
-              <li style="--d:4"><span class="ind"></span><span class="fn">deploy</span>(build);</li>
-              <li style="--d:3"><span class="ind"></span><span class="kw">else</span></li>
-              <li style="--d:4"><span class="ind"></span><span class="fn">requestReview</span>(build);</li>
-              <li style="--d:2"><span class="ind"></span>}</li>
-              <li style="--d:1"><span class="ind"></span>}</li>
-              <li style="--d:1"><span class="ind"></span><span class="kw">return</span> build.<span class="at">status</span>;</li>
-              <li style="--d:0">}</li>
-            </ol>
+            <ol class="narr-code mono" aria-label="The C++ program the tool narrated. Select a line to hear it from there."></ol>
             <div class="narr-caption" aria-live="polite">
-              <span class="narr-who mono">Ready</span>
+              <span class="narr-who mono">Real output</span>
               <span class="narr-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
-              <p class="narr-text">Press play to hear structure-first narration, the technique from the paper.</p>
+              <p class="narr-text">Hear what the tool actually produced: for every line, Rachel reads the code and then Andy explains it. Press play, or tap any line.</p>
+              <span class="narr-prog" aria-hidden="true"><i></i></span>
             </div>
             <div class="narr-controls">
-              <button class="narr-play" type="button">▶ Hear the narration</button>
+              <button class="narr-play" type="button">▶ Play the narration</button>
               <button class="narr-sound" type="button" aria-pressed="true" title="Sound on or off">🔊 Sound on</button>
             </div>
-            <p class="visual-foot mono">Demo uses your browser’s built-in voices · the extension uses ElevenLabs (Rachel reads code, Andy explains)</p>
+            <p class="visual-foot mono">Real, unedited recordings from the tool’s 2025 run · GPT narration voiced by ElevenLabs · captions transcribed with Whisper. GPT wrote 38 explanations for this 37-line file, so a few of Andy’s lines (18–20, 32–35) describe a neighbouring line.</p>
           </div>
         </article>
 
